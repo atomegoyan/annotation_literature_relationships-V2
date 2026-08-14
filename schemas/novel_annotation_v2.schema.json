@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/floriancafiero/annotation_literature_relationships/schemas/novel_annotation_v2.schema.json",
+  "title": "Novel relationship annotation",
+  "version": "2.0",
+  "description": "Annotation of romantic, erotic, sexual, conjugal, desirous, or historically coded relations in late nineteenth- and early twentieth-century novels. Version 2: relation_type redefined (queer, mixed_gender), six new closed fields (structure, status, reciprocity, exclusivity, adultery, explicitness_in_plot), and structured evidence with verbatim quotations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["novel_id", "relations"],
+  "properties": {
+    "novel_id": {"type": "string"},
+    "title": {"type": "string"},
+    "author": {"type": "string"},
+    "year": {"type": ["integer", "string", "null"]},
+    "corpus_notes": {"type": "string"},
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relation_id",
+          "characters",
+          "relation_type",
+          "structure",
+          "status",
+          "reciprocity",
+          "exclusivity",
+          "adultery",
+          "explicitness",
+          "explicitness_in_plot",
+          "centrality",
+          "framing",
+          "outcome",
+          "evidence",
+          "confidence",
+          "comment"
+        ],
+        "properties": {
+          "relation_id": {
+            "type": "string",
+            "description": "Identifier of the relation within this novel: R1, R2, R3, and so on, ordered by narrative importance."
+          },
+          "characters": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string"},
+            "description": "Names or designations of the participants. Use the fullest form the text provides; a collective participant may be named as a group."
+          },
+
+          "relation_type": {
+            "type": "string",
+            "enum": [
+              "female_male",
+              "female_female",
+              "male_male",
+              "mixed_gender",
+              "unknown_gender",
+              "queer",
+              "unclear"
+            ],
+            "description": "Gender configuration of the participants, not the certainty that the relation is romantic or sexual. female_male: one character identified as female and one identified as male. female_female: two characters identified as female. male_male: two characters identified as male. mixed_gender: relation mixing several gender patterns. unknown_gender: relation is present, but the gender of one or more participants cannot be reliably determined from the text. queer: relation involving one or more gender non-conforming person(s), for instance characters that could be described as intersex, genderfluid, non-binary, or agender, or whose sex or gender status the text presents as unstable. unclear: relation candidate is present, but its relational configuration cannot be reliably determined."
+          },
+          "structure": {
+            "type": "string",
+            "enum": [
+              "dyadic",
+              "triangular",
+              "group_or_milieu",
+              "hierarchy_group",
+              "unclear"
+            ],
+            "description": "Number and shape of the participants. dyadic: relation between two people. triangular: relation between three people. group_or_milieu: mutual relationship between more than three people. hierarchy_group: relationship within a group centered around a particular character. unclear: the shape of the relation cannot be determined."
+          },
+
+          "status": {
+            "type": "string",
+            "enum": [
+              "married",
+              "engaged",
+              "romantic_relationship",
+              "physical_relationship",
+              "ambiguous_friendship",
+              "seduction",
+              "unclear"
+            ],
+            "description": "Nature of the bond. married: married couple. engaged: engaged couple. romantic_relationship: a relationship involving romantic feelings. physical_relationship: a physical (sexual) relationship that does not seem to involve, or is not supposed to involve, romantic feelings. ambiguous_friendship: a relationship officially presented as a platonic friendship, but in which words, gestures and/or actions suggest that at least one of the two parties is attracted to the other. seduction: a relationship in which at least one of the parties is attracted to the other and sets out to seduce them. unclear: not enough evidence to assess whether the relationship involves romantic feelings, physical relations, or only seduction."
+          },
+          "reciprocity": {
+            "type": "string",
+            "enum": ["one_sided", "reciprocal", "asymmetrical", "unclear"],
+            "description": "Balance of commitment between the participants. one_sided: only one of the two characters is attracted to or interested in engaging in a relationship with the other. reciprocal: both characters are generally equally committed to one another; exceptions may occur in particular situations, such as a passing argument. asymmetrical: despite a shared basis of reciprocity, for instance in an established relationship, one of the characters is more committed than the other or views the relationship differently. unclear: the balance of commitment cannot be determined."
+          },
+          "exclusivity": {
+            "type": "string",
+            "enum": [
+              "exclusive",
+              "emotionally_exclusive",
+              "primary_relationship",
+              "secondary_relationship",
+              "polyamory",
+              "adultery",
+              "uncommitted",
+              "unclear"
+            ],
+            "description": "Rules of exclusivity the relation operates under. exclusive: the characters are emotionally and physically exclusive to one another and do not allow themselves any romantic or sexual relationship with anyone else. emotionally_exclusive: the characters allow themselves physical relationships with other people as long as they do not develop romantic feelings for them. primary_relationship: both partners are free to have other relationships, but this one holds particular importance or takes centre stage. secondary_relationship: one or more of the characters involved are in several relationships, and this one is not the most important. polyamory: each character is free to have, or actively pursues, several romantic and/or sexual relationships, and none takes priority over the others. adultery: an adulterous relationship, that is, one in which at least one of the partners is cheating on their official partner by engaging in it. uncommitted: neither party has made any promise regarding exclusivity. unclear: not enough evidence to assess whether the relationship is exclusive."
+          },
+          "adultery": {
+            "type": "string",
+            "enum": [
+              "loyal",
+              "adultery_one",
+              "adultery_both",
+              "external_adultery",
+              "none",
+              "unclear"
+            ],
+            "description": "Whether the rules recorded in exclusivity, or those of an outside partner, are broken. loyal: both parties respect the rules regarding exclusivity. adultery_one: one of the parties disrespects the rules regarding exclusivity. adultery_both: both parties disrespect the rules regarding exclusivity. external_adultery: by engaging in this relationship, at least one of the parties is cheating on another partner; use together with exclusivity = adultery. none: the issue of adultery does not arise in this context, as with one-sided romantic pursuits or casual relationships. unclear: not enough evidence provided."
+          },
+
+          "explicitness": {
+            "type": "string",
+            "enum": ["explicit", "coded", "rumor", "weak_inference", "unclear"],
+            "description": "How directly the narration represents the relation. explicit: the text names, stages, or directly confesses love, desire, sex, marriage, adultery, kisses, or erotic attachment. coded: the relation is suggested through euphemism, fascination, jealousy, intense intimacy, repeated symbolic language, or historical codes. rumor: the relation exists mainly as gossip, scandal, accusation, reputation, blackmail, or public suspicion. weak_inference: a queer or romantic reading is possible but fragile; use sparingly. unclear: the degree of explicitness cannot be determined."
+          },
+          "explicitness_in_plot": {
+            "type": "string",
+            "enum": [
+              "explicit",
+              "explicit_except",
+              "hidden_except",
+              "hidden",
+              "unclear"
+            ],
+            "description": "How openly the relation is known among the characters, independently of how the narration represents it. explicit: a relationship known to all the characters. explicit_except: a relationship that is generally known, but kept hidden from certain specific characters in the plot. hidden_except: a relationship that is generally kept secret, but which is known to one or several specific characters in the plot. hidden: a relationship kept secret from everyone except the characters involved in it. unclear: the diegetic openness of the relation cannot be determined."
+          },
+
+          "centrality": {
+            "type": "string",
+            "enum": ["main", "secondary", "episode", "milieu", "unclear"],
+            "description": "Narrative weight of the relation. main: central to the novel, the protagonist's trajectory, or the main plot. secondary: an important subplot, or affects the main characters, but is not the main relation. episode: a brief adventure, temptation, encounter, confession, memory, or scene. milieu: a background element of a social world such as a salon, brothel, convent, boarding school, decadent circle, or theater. unclear: centrality cannot be determined."
+          },
+          "framing": {
+            "type": "string",
+            "enum": [
+              "positive",
+              "neutral_ambivalent",
+              "eroticized_exoticized",
+              "decadent_sublime",
+              "redemptive_spiritualized",
+              "moralized_pathologized",
+              "comic_caricatural",
+              "predatory_or_corrupting",
+              "unclear"
+            ],
+            "description": "Dominant evaluative framing. Choose one only; explain a plausible secondary framing in comment. positive: presented as love, solidarity, attachment, care, mutual recognition, or a livable bond. neutral_ambivalent: neither clearly condemned nor clearly valorized, or the judgment remains mixed. eroticized_exoticized: framed as spectacle, sensual curiosity, voyeuristic scene, exotic setting, or erotic ornament. decadent_sublime: morbid, painful, sacrificial, sacred, aestheticized, feverish, cruel, or sublime, without being reducible to moral condemnation or medical pathology. redemptive_spiritualized: framed as salvation, spiritual refuge, healing, purification, compassion, or quasi-religious rescue. moralized_pathologized: associated with vice, sin, degeneration, illness, hysteria, perversion, crime, or moral decline. comic_caricatural: framed as ridiculous, grotesque, satirical, or comic. predatory_or_corrupting: framed as emprise, manipulation, initiation into vice, corruption, coercion, or predation. unclear: the dominant framing cannot be determined."
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "stable_or_open",
+              "open_contested",
+              "return_to_norm",
+              "separation_erasure",
+              "social_disgrace",
+              "illness_madness_decline",
+              "fatal_ending",
+              "unclear"
+            ],
+            "description": "Narrative resolution of the relation. stable_or_open: the relation continues, remains possible, or is not narratively destroyed. open_contested: the ending is suspended, disputed, reopened, or undecidable; rival relations or unresolved attachments remain active. return_to_norm: return to marriage, heterosexuality, family order, social respectability, or normative domesticity. separation_erasure: the relation ends through separation, disappearance, forgetting, narrative marginalization, or erasure. social_disgrace: the relation leads to scandal, reputational ruin, exclusion, blackmail, or public shame. illness_madness_decline: the relation is followed by illness, madness, physical decline, moral degradation, or psychological collapse. fatal_ending: the relation is followed by a fatal narrative resolution affecting one or more central characters. unclear: the outcome cannot be determined."
+          },
+
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "description": "One to ten pieces of evidence supporting the closed labels. Give the verbatim passage in quote whenever a specific line or short passage carries a label; most items should have one. Use description alone when the evidence is a pattern spread across the novel rather than a quotable line.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["description"],
+              "properties": {
+                "quote": {
+                  "type": "string",
+                  "description": "Verbatim passage copied from the novel, reproduced exactly, without normalizing spelling, accents, or punctuation. Omit when no single passage carries the point."
+                },
+                "locator": {
+                  "type": "string",
+                  "description": "Where the passage is found: chapter, part, section, or page, if determinable from the text. Omit when unknown; do not invent one."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "What this evidence shows and which label it supports. When quote is omitted, this carries the whole piece of evidence as a paraphrase."
+                }
+              }
+            }
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low", "exclude"],
+            "description": "Security of the annotation. high: several convergent textual cues, little doubt. medium: plausible and supported, but some interpretive ambiguity remains. low: fragile, useful for review but not for conservative statistics. exclude: the candidate should probably not be counted as an annotated relationship."
+          },
+          "comment": {
+            "type": "string",
+            "description": "Brief free-text justification: dominant versus secondary readings, why a difficult label was chosen, and anything that makes the annotation auditable."
+          }
+        }
+      }
+    }
+  }
+}

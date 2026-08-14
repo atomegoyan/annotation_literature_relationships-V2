@@ -1,0 +1,15 @@
+# Local run configuration. Not tracked in git (*.local.yaml is ignored).
+# First annotation round: one novel, one model.
+
+models:
+  - anthropic/claude-opus-5
+
+parameters:
+  # Claude Opus 5 rejects temperature / top_p / top_k. They are omitted here on
+  # purpose: the runner only sends a sampling parameter when this file sets it.
+  # Do not re-add them for this model.
+  max_tokens: 64000
+
+openrouter:
+  http_referer: "https://github.com/floriancafiero/annotation_literature_relationships"
+  title: "Annotation LLM relationships"

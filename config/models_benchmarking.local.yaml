@@ -1,0 +1,20 @@
+# Local run configuration. Not tracked in git (*.local.yaml is ignored).
+# First annotation round: one novel, one model.
+
+models:
+  - deepseek/deepseek-v4-pro
+  - anthropic/claude-sonnet-5
+  - anthropic/claude-opus-5
+  - openai/gpt-5.6-luna-pro
+  - openai/gpt-5.6-terra
+
+
+parameters:
+  # Claude Opus 5 rejects temperature / top_p / top_k. They are omitted here on
+  # purpose: the runner only sends a sampling parameter when this file sets it.
+  # Do not re-add them for this model.
+  max_tokens: 64000
+
+openrouter:
+  http_referer: "https://github.com/floriancafiero/annotation_literature_relationships"
+  title: "Annotation LLM relationships"

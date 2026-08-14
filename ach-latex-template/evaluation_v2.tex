@@ -1,0 +1,418 @@
+% Evaluation section, rewritten. Meant to be included from paper.tex with
+% \input{evaluation_v2} at the point in the main text where the evaluation belongs.
+% Requires three entries added to bibliography.bib: kirillov2019panoptic,
+% luo2005coreference, krippendorff2004content.
+%
+% NOTE: the figures below are computed after normalising the gold file's
+% "asymetrical" to the codebook's "asymmetrical" in the reciprocity column.
+% Without that fix reciprocity reads 0.25 instead of 0.70 and every composite
+% score drops. See the remark on label validation in "What the measure cannot see".
+\section{Evaluating the annotation pipeline}
+\label{sec:evaluation}
+
+\subsection{What we are asking of the models}
+
+Before running the codebook over some four hundred novels, we need to know what an
+LLM annotation of a novel is actually worth. We therefore hand-annotated one novel,
+Lucie Delarue-Mardrus's \emph{L'Ange et les pervers} (1930), following the same
+codebook we give the models, and used it as a gold standard. The novel is a
+deliberate choice rather than a convenient one: its protagonist, Marion / Mario de
+Valdeclare, is presented as intersex and moves between sapphic salons and male
+homosexual circles, so the novel exercises the parts of the grid we care most about
+--- the \texttt{queer} value of \texttt{relation\_type}, collective and milieu
+relationships, and desire that is coded rather than declared. The human annotation
+records fourteen relationships, from the central bond between Marion and Laurette
+Wells down to a two-line marriage recalled in the backstory.
+
+One novel gives a first reading of how the pipeline behaves, not a corpus-level
+estimate of its accuracy; everything below should be read as a pilot. Five models
+were run on this novel through OpenRouter with an identical system prompt, codebook,
+and JSON schema (Table~\ref{tab:models}).
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    Provider & Model \\
+    \midrule
+    DeepSeek  & V4 Pro \\
+    Anthropic & Claude Sonnet 5 \\
+    Anthropic & Claude Opus 5 \\
+    OpenAI    & GPT-5.6 Luna Pro \\
+    OpenAI    & GPT-5.6 Terra \\
+    \bottomrule
+  \end{tabular}
+  \caption{The five models compared, all called through OpenRouter with an identical
+  system prompt, codebook, and JSON schema.}
+  \label{tab:models}
+\end{table}
+
+\subsection{Two questions, two measures}
+
+Reading a novel with this grid means doing two rather different things. The
+annotator first draws up a \emph{census}: which relationships in this novel are
+worth an entry at all? Then, for each entry, they \emph{code} it, choosing one
+label per closed field. A model can do one well and the other badly --- it can
+find exactly the fourteen relationships a human found and misread the tone of
+every one of them, or code impeccably three relationships nobody would have
+listed. A single accuracy figure hides that difference, which is precisely the
+difference we want to report. We therefore score the census and the coding
+separately, then combine them.
+
+The distinction is not ours. Content analysis has long separated
+\emph{unitizing} --- deciding what the units of analysis are --- from
+\emph{categorizing} them, and has insisted that the reliability of the first
+cannot be folded into the reliability of the second
+\cite{krippendorff2013content,krippendorff2016unitizing}. The measure that
+addresses both at once is Mathet, Widlöcher and Métivier's $\gamma$, which
+computes an alignment between annotators' units and scores agreement on that
+alignment, with $\gamma_{cat}$ isolating the categorization component
+\cite{mathet2015gamma,mathet2017gammacat}. We would use $\gamma$ if we could.
+We cannot, because $\gamma$ assumes units positioned on a continuum --- spans of
+text, stretches of recording --- and measures positional discrepancy as part of
+its dissimilarity. Our units are not spans. A relationship is not located at a
+place in the novel; it is identified by \emph{who is in it}, and its footprint
+in the text is the whole book. What follows is therefore $\gamma$'s
+architecture --- align first, then score categorization on the alignment ---
+rebuilt on a set-identity criterion rather than a positional one.
+
+\paragraph{Matching relationships.} Let $G$ be the set of relationships in the
+human annotation of a novel and $P$ the set proposed by a model. Neither is an
+ordered list, so nothing can be compared until the two sets are aligned. We
+align them on the participants: each relationship $r$ carries an identifier
+$\mathrm{id}(r)$ built from the characters involved ---
+\texttt{laurette\_aimee} for the affair between Laurette Wells and Aimée de
+Lagres, \texttt{pere\_mere} for Marion's parents --- recorded in both files in
+the \texttt{id\_uniforme} column, with aliases resolved beforehand (Marion,
+Mario, and Miss Marion Hervin are one character). Two relationships match when
+their identifiers are equal:
+%
+\begin{align}
+M = \{(g,p) \in G \times P \;:\; \mathrm{id}(g) = \mathrm{id}(p)\} .
+\end{align}
+%
+In the vocabulary of coreference scoring this is CEAF under Luo's strictest
+similarity, $\phi_1$, which credits an alignment only when the two sets are
+identical \cite{luo2005coreference}. Luo sets $\phi_1$ aside as too severe for
+coreference, where exact agreement on a mention chain is vanishingly rare; it is
+usable here only because the participant lists are short and canonicalised
+upstream. The gain is that the census score carries no similarity function and
+no threshold --- it is a deterministic function of the two annotation files ---
+and a disagreement about who is involved in a relationship is treated as what it
+is: a disagreement about the novel, not a spelling problem.
+
+\paragraph{Matching relationships.} Let $G$ be the set of relationships in the human
+annotation of a novel and $P$ the set proposed by a model. Neither is an ordered
+list, so nothing can be compared until the two sets are aligned. We align them on
+the participants: each relationship $r$ carries an identifier $\mathrm{id}(r)$ built
+from the characters involved --- \texttt{laurette\_aimee} for the affair between
+Laurette Wells and Aimée de Lagres, \texttt{pere\_mere} for Marion's parents ---
+recorded in both files in the \texttt{id\_uniforme} column, with aliases resolved
+beforehand (Marion, Mario, and Miss Marion Hervin are one character). Two
+relationships match when their identifiers are equal:
+%
+\begin{align}
+M = \{(g,p) \in G \times P \;:\; \mathrm{id}(g) = \mathrm{id}(p)\} .
+\end{align}
+%
+This is an exact, one-to-one join, with no similarity function and no threshold: the
+census score is a deterministic function of the two annotation files, and a
+disagreement about who is involved in a relationship is treated as what it is --- a
+disagreement about the novel, not a spelling problem.
+
+\paragraph{Recognition quality: did the model see the same relationships?} From $M$
+we take the usual precision, recall, and their harmonic mean, computed over
+relationships rather than tokens:
+%
+\begin{align}
+\mathrm{P} = \frac{|M|}{|P|}, \qquad
+\mathrm{R} = \frac{|M|}{|G|}, \qquad
+\mathrm{RQ} = \frac{2\,\mathrm{P}\,\mathrm{R}}{\mathrm{P} + \mathrm{R}} .
+\end{align}
+%
+Precision asks whether the relationships a model proposes are ones a human reader
+would also have listed; recall asks how much of the novel's relational fabric it
+leaves out. RQ says nothing at all about how well anything was described.
+
+\paragraph{Coding quality: did it fill the grid the same way?} For a matched pair
+$(g,p)$, we compare the closed fields one by one and take the proportion on which
+the human and the model wrote the same label:
+%
+\begin{align}
+a(g,p) &= \frac{1}{K} \sum_{k=1}^{K} \mathbf{1}\!\left[\, g_k = p_k \,\right] , \\
+\mathrm{CQ} &= \frac{1}{|M|} \sum_{(g,p) \in M} a(g,p) .
+\end{align}
+%
+Here $\mathbf{1}[\cdot]$ is 1 when the two labels are identical and 0 otherwise:
+credit is strict, since the codebook offers no principled way to call
+\texttt{decadent\_sublime} half-right when the annotator wrote
+\texttt{moralized\_pathologized}. Every field weighs the same, $1/K$. The grid has
+eleven closed fields, but the gold file predates \texttt{explicitness\_in\_plot},
+added in schema v2, so this pilot scores $K = 10$: \texttt{relation\_type} and
+\texttt{structure} (participants and shape); \texttt{status}, \texttt{reciprocity},
+\texttt{exclusivity}, \texttt{adultery} (nature and rules of the bond);
+\texttt{explicitness}, \texttt{centrality}, \texttt{framing}, \texttt{outcome}
+(representation and narrative role). \texttt{confidence} is logged by the model but
+is metadata about the annotation, not a property of the relationship, so it is not
+scored. CQ is computed only on matched pairs: it measures description quality among
+the relationships both readers agreed to list.
+
+\paragraph{One number, and why it is a product.} Suppose we had scored the
+whole annotation at once, weighting each matched relationship by how well it was
+coded --- a precision and a recall in which a matched pair counts not as $1$ but
+as $a(g,p)$. The harmonic mean of those two quantities is exactly
+$\mathrm{RQ} \times \mathrm{CQ}$: the mean coding score factors out of the
+numerator and cancels in the denominator. The product is therefore not a
+weighting we chose but the single-figure score itself, read in its two parts.
+%
+\begin{align}
+\mathrm{AQ} = \mathrm{RQ} \times \mathrm{CQ} .
+\end{align}
+%
+This is the structure of panoptic quality in image segmentation, where a
+recognition quality --- the same $F_1$ over matched objects --- multiplies a
+segmentation quality that averages overlap on the matches
+\cite{kirillov2019panoptic}. Ours differs in the similarity being averaged:
+grid agreement in place of pixel overlap. The same two-stage shape governs the
+scoring of template filling, from the MUC evaluations onward
+\cite{chinchor1992muc4,du2021grit}, and Chen et al.\ \cite{chen2023unified} show
+that this family of metrics --- match substructures, then normalise --- covers
+most of structured-prediction evaluation. Naming that lineage is worth a
+sentence because it locates a digital-humanities coding grid inside a
+well-understood measurement problem rather than inventing a private one.
+
+\subsection{What the pipeline gets right, and where it stops}
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{lcccccc}
+    \toprule
+    Model & $|P|$ & P & R & RQ & CQ & AQ \\
+    \midrule
+    \textbf{Claude Opus 5} & 14 & 0.71 & 0.71 & 0.71 & 0.72 & \textbf{0.51} \\
+    GPT-5.6 Terra          &  6 & 1.00 & 0.43 & 0.60 & 0.78 & 0.47 \\
+    Claude Sonnet 5        &  6 & 1.00 & 0.43 & 0.60 & 0.73 & 0.44 \\
+    GPT-5.6 Luna Pro       &  5 & 1.00 & 0.36 & 0.53 & 0.66 & 0.35 \\
+    DeepSeek V4 Pro        &  7 & 0.86 & 0.43 & 0.57 & 0.47 & 0.27 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Census, coding, and combined score for the five models on
+  \emph{L'Ange et les pervers}, against fourteen human-annotated relationships,
+  sorted by AQ. $|P|$ is the number of relationships the model proposed.}
+  \label{tab:model-results}
+\end{table}
+
+\paragraph{Two annotating temperaments.} The $|P|$ column of
+Table~\ref{tab:model-results} is the most telling. Claude Opus 5 proposes exactly
+fourteen relationships and gets ten of them right; the other four models propose five
+to seven and are almost never wrong about the ones they propose. The second behaviour
+is not caution about \emph{coding} but a narrower idea of what counts as a
+relationship: those models list the named couples --- Laurette and Aimée, Aimée and
+her ex-husband, Marion and Laurette --- and stop there. What they leave out is the
+collective material: Laurette Wells surrounded by her favourites, the theatre milieu
+around Ginette Lobre, the powdered young men of Julien Midalge's circle. For a study
+of sapphic and homosexual sociability those are not decorative background; they are
+the milieux the corpus was assembled to describe. A model with perfect precision that
+returns only the foreground couples would quietly reshape the corpus into a series of
+couples --- which is one reason precision alone is a poor guide to model choice here.
+
+\paragraph{The grid has three layers, and they are not the codebook's three
+families.} Averaging over fields hides the finding, so Table~\ref{tab:field-results}
+reports agreement field by field.
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{lcccccc}
+    \toprule
+    Field & Opus & Terra & Sonnet & Luna & DeepS. & mean \\
+    \midrule
+    \texttt{relation\_type} & 0.90 & 1.00 & 1.00 & 1.00 & 0.83 & 0.95 \\
+    \texttt{structure}      & 0.90 & 1.00 & 0.67 & 1.00 & 1.00 & 0.91 \\
+    \texttt{centrality}     & 0.90 & 0.83 & 1.00 & 0.80 & 0.67 & 0.84 \\
+    \texttt{status}         & 0.70 & 1.00 & 0.83 & 0.80 & 0.83 & 0.83 \\
+    \midrule
+    \texttt{explicitness}   & 0.70 & 1.00 & 0.67 & 0.80 & 0.33 & 0.70 \\
+    \texttt{reciprocity}    & 0.70 & 0.83 & 0.83 & 0.80 & 0.33 & 0.70 \\
+    \texttt{outcome}        & 0.70 & 0.83 & 0.67 & 0.60 & 0.33 & 0.63 \\
+    \midrule
+    \texttt{exclusivity}    & 0.70 & 0.50 & 0.83 & 0.40 & 0.00 & 0.49 \\
+    \texttt{adultery}       & 0.70 & 0.33 & 0.67 & 0.40 & 0.17 & 0.45 \\
+    \texttt{framing}        & 0.30 & 0.50 & 0.17 & 0.00 & 0.17 & 0.23 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Agreement with the human annotation, field by field, on matched
+  relationships only (10 pairs for Opus, 6 for Terra, Sonnet and DeepSeek, 5 for
+  Luna). Fields are grouped by mean agreement, not by codebook family.}
+  \label{tab:field-results}
+\end{table}
+
+The top group is the descriptive layer, and it is essentially solved. Once a model
+and a human agree that a relationship exists, they agree on its gender configuration,
+on the shape of the group, on the kind of bond, and on how much room the novel gives
+it. The \texttt{queer} coding is the strongest case: every relationship involving
+Marion / Mario is coded \texttt{queer} by all five models, without exception, which
+is not a trivial result for a 1930 novel that never uses a clinical vocabulary for
+its protagonist. In fact the only two \texttt{relation\_type} errors in the entire
+pilot fall on the same relationship, Ginette Lobre and her theatre milieu, where the
+annotator coded \texttt{mixed\_gender} and two models read a single-gender couple ---
+that is, on the one relationship whose participants are a group rather than a person.
+
+The middle group --- how openly the narration handles the relation, who is more
+committed than whom, how the relation ends --- sits at roughly two thirds, usable
+with care and worth reporting field by field rather than pooled.
+
+The bottom group is where the pipeline fails, and the three fields have something in
+common: they all ask for a judgment about norms. \texttt{exclusivity} and
+\texttt{adultery} record the rules a relation operates under and whether they are
+broken, and the codebook binds them by an explicit pairing rule (a relation that is
+itself adulterous takes \texttt{adultery} together with \texttt{external\_adultery}).
+The models do not apply that rule as a rule: pooling the matched pairs, they answer
+\texttt{external\_adultery} four times where the annotator wrote \texttt{unclear} and
+three times where she wrote \texttt{none}, and flatten \texttt{loyal} to \texttt{none}
+four times. These are not fine judgments of the text but failures to treat the
+codebook as a formal system, which suggests the remedy is a schema constraint rather
+than a better prompt.
+
+\texttt{framing}, the stance the novel takes towards a relationship, is the field
+that resists most: 0.23 overall, against 0.11 for uniform guessing over its nine
+labels. The error is systematic rather than random. \texttt{neutral\_ambivalent} is
+the models' default answer, given fifteen times out of thirty-three, and
+\texttt{redemptive\_spiritualized} --- which the annotator uses five times --- is
+never once produced by any model. Where she reads spiritual rescue in Marion's
+attachment to Laurette, three models read plain \texttt{positive} and the others
+\texttt{decadent\_sublime} or \texttt{neutral\_ambivalent}; where she reads
+\texttt{predatory\_or\_corrupting} in Laurette's hold over Aimée, the models spread
+over \texttt{decadent\_sublime} and \texttt{neutral\_ambivalent}. The pattern is a
+flattening: the models register that something intense is happening and decline to
+say what the novel makes of it. The vocabulary of \emph{pervers} and of salvation
+that gives the novel its title is exactly what the automatic pass does not recover.
+
+That contrast \emph{is} the result we want to report: the grid contains a descriptive
+layer that can be automated at corpus scale today and a normative layer that cannot,
+and the second layer is the one that carries the interpretive claims of the project.
+
+Two caveats keep these figures honest. Agreement is not chance-corrected, and the
+marginals are skewed (\texttt{dyadic} dominates \texttt{structure}, \texttt{none}
+dominates \texttt{adultery}), so the top of the table is flattered; a chance-corrected
+coefficient such as Krippendorff's $\alpha$ \cite{krippendorff2004content} becomes
+meaningful once a second human annotator gives us a ceiling to compare against. And
+full-grid agreement is very rare: across thirty-three matched pairs, exactly two
+relationships were coded correctly on all ten fields, both of them the same
+relationship --- Aimée and her ex-husband, the most conventional bond in the book.
+
+\paragraph{The easy relationships are not the interesting ones.} Reading the same
+data by relationship rather than by model (Table~\ref{tab:relation-results}) sharpens
+the point. The relationships every model finds and codes well are the peripheral,
+legible ones: a marriage recalled in the backstory, a young man's one-sided
+infatuation with Mario. The two relationships that organise the novel --- Marion and
+Laurette, Laurette and Aimée --- are found by all five models and coded at 0.50,
+half the grid. And the further one moves towards collective forms, the sharper the
+drop: Laurette's circle of favourites is found once, Ginette's theatre milieu twice
+and coded at 0.35, Midalge's homosexual circle never. The pipeline is most reliable
+exactly where a scholar needs it least.
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{llcc}
+    \toprule
+    Relationship & Type & Found & $\bar a$ \\
+    \midrule
+    Marion / Mario -- «~le petit brun~» & \texttt{queer}, episode & 5 & 0.84 \\
+    Aimée -- comtesse Talliard       & \texttt{female\_female}    & 5 & 0.70 \\
+    Marion / Mario -- Laurette Wells & \texttt{queer}, main       & 5 & 0.50 \\
+    Laurette -- Aimée de Lagres      & \texttt{female\_female}    & 5 & 0.50 \\
+    Aimée -- her ex-husband          & \texttt{female\_male}      & 4 & 0.95 \\
+    Aimée -- the child's father      & \texttt{female\_male}      & 3 & 0.63 \\
+    Marion's father -- Marion's mother & \texttt{female\_male}    & 2 & 0.90 \\
+    Ginette Lobre -- theatre milieu  & \texttt{mixed\_gender}     & 2 & 0.35 \\
+    Laurette -- Cecil Hampton        & \texttt{female\_male}      & 1 & 0.80 \\
+    Laurette -- her favourites       & \texttt{hierarchy\_group}  & 1 & 0.70 \\
+    \midrule
+    Marion / Mario -- Aimée (seduction) & \texttt{queer}           & 0 & --- \\
+    Marion / Mario -- Midalge's circle  & \texttt{queer}, milieu   & 0 & --- \\
+    The uncle -- the aunt               & \texttt{female\_male}    & 0 & --- \\
+    Marion -- the monk at Solesmes      & flagged \texttt{exclude} & 0 & --- \\
+    \bottomrule
+  \end{tabular}
+  \caption{The fourteen human-annotated relationships, by number of models that found
+  them (out of five) and mean coding agreement $\bar a$ among those models.}
+  \label{tab:relation-results}
+\end{table}
+
+\paragraph{The models rarely decline.} The codebook gives every field an
+\texttt{unclear} value, and the annotator uses it: some bonds in this novel genuinely
+do not settle, particularly on \texttt{exclusivity} and \texttt{adultery} in the
+milieu relationships. The models almost never do. Pooling matched pairs, where the
+annotator wrote \texttt{unclear} the models committed to a substantive label in
+twelve cases out of thirteen; in the other direction they abstained on eleven of the
+three hundred and seventeen fields where she had committed. This asymmetry shapes
+what a corpus-scale run would produce: not a cautious annotation with visible gaps,
+but a complete-looking table whose confident cells include the ones a human reader
+would have left open. Reporting it alongside the field agreements also stops
+abstention from becoming a cheap way to look accurate.
+
+\subsection{What the measure cannot see}
+
+Matching on participants is what makes the census score exact, and it also fixes what
+the score can register.
+
+\emph{Collective relationships are the residual problem.} Alias resolution settles
+naming for named characters; it does not decide whether Laurette and her favourites
+are one \texttt{hierarchy\_group} relationship or six dyads. That is a scholarly
+decision, not noise, and under an exact key a legitimate disagreement about it costs
+a false positive and a false negative at once. The gap between the dyadic and
+collective strata in Table~\ref{tab:relation-results} is therefore partly a measure
+of how each model resolved a question the codebook leaves open. Fixing a convention
+--- a canonical identifier per milieu, with members listed in a separate field --- is
+the first change we plan for the next version of the grid.
+
+\emph{Direction is invisible.} The grid stores participants as a list, not as roles,
+while several fields are directional: \texttt{reciprocity} = \texttt{one\_sided} does
+not say who desires whom, and \texttt{adultery} = \texttt{adultery\_one} does not say
+which party breaks the rule. A model that inverts the seducer and the seduced scores
+a perfect match. For a project whose object is the asymmetry of desire this is a
+substantive gap, and the reason a \texttt{direction} field is the second planned
+change.
+
+\emph{A strict metric is only as good as the label vocabulary.} Exact matching makes
+the score reproducible, but it also means that a variant spelling of a label counts
+as a disagreement. One misspelling in the gold file --- \texttt{asymetrical} for the
+codebook's \texttt{asymmetrical} --- silently drove agreement on
+\texttt{reciprocity} from 0.70 down to 0.25, turning a working field into an apparent
+failure. The scoring pipeline now validates every label in both files against the
+codebook's declared vocabulary before any comparison is made, and we report this
+because it is the kind of error that survives peer review unnoticed.
+
+\emph{The gold standard is one novel, and the counts are small.} Ten matched pairs
+for the best model means a single relationship moves CQ by ten points, and the
+ordering of Opus, Terra, and Sonnet in Table~\ref{tab:model-results} should not be
+read as a separation. One of the fourteen gold relationships (Marion and the monk at
+Solesmes) carries the annotator's own \texttt{exclude} flag and is nonetheless
+counted against the models here; treating it as an ignore region, as detection
+benchmarks do, would raise every recall figure. And we have no human ceiling yet:
+fields where two human annotators would agree at 0.6 cannot be used to convict a
+model at 0.6, so double annotation of a subset is the measurement that would make
+Table~\ref{tab:field-results} fully interpretable.
+
+\subsection{What we carry forward}
+
+On this pilot, Claude Opus 5 is the model we take to the rest of the corpus: it is
+the only one that annotates the novel at the granularity the codebook asks for,
+milieux included, and it pays for that coverage with a precision the others never
+have to risk. The ranking rests on one novel and fourteen relationships and should be
+revisited as the gold standard grows.
+
+More important than the ranking is the shape of the result. The census and the
+descriptive half of the grid --- who is involved, in what gender configuration, in
+what shape of group, in what kind of bond, with how much narrative room --- are
+reliable enough to run over four hundred novels and to support distributional claims.
+The normative half --- what the relation owes to whom, and what the novel makes of it
+--- is not, and we do not intend to publish corpus-wide figures on
+\texttt{framing} on the strength of an automatic pass. The pipeline's role in this
+project is accordingly a division of labour rather than a replacement: it produces
+the census and the descriptive coding at scale, and it directs human reading towards
+the relationships where the interpretive fields are actually at stake.

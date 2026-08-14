@@ -1,0 +1,162 @@
+% Evaluation section of the paper. Meant to be included from paper.tex with
+% \input{evaluation} at the point in the main text where the evaluation belongs.
+\section{Evaluating the annotation pipeline}
+\label{sec:evaluation}
+
+\subsection{Gold standard and models compared}
+
+We evaluate the pipeline against a single hand-annotated novel,
+\emph{L'Ange et les pervers} (Lucie Delarue-Mardrus, 1930), for which a human annotator
+followed our annotation codebook (the same one given to the models) to produce 14 gold
+relationships. This is a genuine limitation of the present evaluation: one novel gives us
+a first read of how the pipeline behaves, not a corpus-level estimate of its accuracy, and
+the numbers below should be read as a pilot, not as a final benchmark. Extending the gold
+standard to further novels of the corpus is future work.
+
+Five large language models, all served through OpenRouter with the same system prompt,
+codebook, and JSON schema, were run on this novel (Table~\ref{tab:models}).
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    Provider & Model \\
+    \midrule
+    DeepSeek  & V4 Pro \\
+    Anthropic & Claude Sonnet 5 \\
+    Anthropic & Claude Opus 5 \\
+    OpenAI    & GPT-5.6 Luna Pro \\
+    OpenAI    & GPT-5.6 Terra \\
+    \bottomrule
+  \end{tabular}
+  \caption{The five models compared, all called through OpenRouter with an identical
+  system prompt, codebook, and JSON schema.}
+  \label{tab:models}
+\end{table}
+
+\subsection{Two capacities, two metrics}
+
+Annotating a novel asks two different things of a model: deciding \emph{which}
+relationships exist, and \emph{describing} each one along the eleven closed fields of the
+codebook (gender configuration, structure, status, and so on). A model can find exactly
+the right relationships and mislabel all of them, or the reverse, so we score these two
+capacities separately before combining them into a single number.
+
+For a novel, let $G = \{g_1, \dots, g_n\}$ be the set of gold relationships and
+$P = \{p_1, \dots, p_m\}$ the set of relationships predicted by a model. Every relationship
+$r$ carries a participant set $C(r)$ and a label vector $\ell(r) = (\ell_1(r), \dots, \ell_K(r))$
+over the codebook's closed fields $\mathcal{F}$, grouped in three families:
+
+\begin{itemize}
+  \item \emph{participants and shape}: \texttt{relation\_type}, \texttt{structure};
+  \item \emph{nature and rules of the bond}: \texttt{status}, \texttt{reciprocity},
+    \texttt{exclusivity}, \texttt{adultery};
+  \item \emph{representation and narrative role}: \texttt{explicitness},
+    \texttt{explicitness\_in\_plot}, \texttt{centrality}, \texttt{framing}, \texttt{outcome}.
+\end{itemize}
+
+This gives $K = 11$ fields in $\mathcal{F}$. The gold file used below predates
+\texttt{explicitness\_in\_plot}, added in schema v2, so this pilot scores grid agreement over
+the remaining $K = 10$ fields; a twelfth field, \texttt{confidence}, is logged by the model but
+is metadata rather than part of $\mathcal{F}$, and is not scored. $G$ and $P$ are unordered
+sets with no shared index, so identification requires an explicit alignment step before any
+field can be compared.
+
+\paragraph{Identification.} Each relationship is keyed by its (canonicalised) participant
+set, $\kappa(r) = C(r)$ — e.g.\ $\kappa(r) = \texttt{laurette\_aimee}$ for a relationship
+between Laurette and Aimée. The matching set
+
+\begin{align}
+M = \{(g,p) \in G \times P \;:\; \kappa(g) = \kappa(p)\}
+\end{align}
+
+is computed as an exact, one-to-one hash join on this key: no similarity function and no
+threshold enter the identification score, which is a deterministic function of the two
+annotation files. From $M$ we compute precision, recall, and their harmonic mean:
+
+\begin{align}
+P_{\mathrm{det}} &= \frac{|M|}{|P|} , \\
+R_{\mathrm{det}} &= \frac{|M|}{|G|} , \\
+F_{1,\mathrm{det}} &= \frac{2\,P_{\mathrm{det}}\,R_{\mathrm{det}}}{P_{\mathrm{det}} + R_{\mathrm{det}}} .
+\end{align}
+
+$F_{1,\mathrm{det}}$ only asks whether the model found the right relationships; it says
+nothing about whether it described them correctly.
+
+\paragraph{Grid agreement.} For every matched pair $(g,p) \in M$, we compare the closed
+fields of $\mathcal{F}$ one by one — \texttt{relation\_type}, \texttt{structure},
+\texttt{status}, \texttt{reciprocity}, \texttt{exclusivity}, \texttt{adultery},
+\texttt{explicitness}, \texttt{centrality}, \texttt{framing}, \texttt{outcome} for this pilot,
+per the field count noted above — and average the agreement with a uniform weight $w_k = 1/K$,
+so every field counts the same regardless of which of the three families it belongs to:
+
+\begin{align}
+s_k(\ell_k(g), \ell_k(p)) &= \mathbb{1}[\ell_k(g) = \ell_k(p)] , \\
+a(g,p) &= \frac{1}{K}\sum_{k \in \mathcal{F}} s_k(\ell_k(g), \ell_k(p)) , \\
+\bar{A} &= \frac{1}{|M|}\sum_{(g,p)\in M} a(g,p) .
+\end{align}
+
+Here $s_k$ is the strict (exact-match) credit function. $\bar A$ is only computed on matched
+relationships: it measures description quality independently of how many relationships were
+found.
+
+\paragraph{Composite score.} Precision and recall re-weighted by how well each matched
+pair was described,
+
+\begin{align}
+P_{\mathrm{soft}} &= \frac{\sum_{(g,p) \in M} a(g,p)}{|P|} , \\
+R_{\mathrm{soft}} &= \frac{\sum_{(g,p) \in M} a(g,p)}{|G|} ,
+\end{align}
+
+combine into a single composite score,
+
+\begin{align}
+\mathrm{sF}_1 = \frac{2\,P_{\mathrm{soft}}\,R_{\mathrm{soft}}}{P_{\mathrm{soft}} + R_{\mathrm{soft}}} = \bar{A} \cdot F_{1,\mathrm{det}} ,
+\end{align}
+
+the second equality following directly from substituting $P_{\mathrm{soft}} = \bar A \, P_{\mathrm{det}}$
+and $R_{\mathrm{soft}} = \bar A \, R_{\mathrm{det}}$ into the harmonic mean, so that $\bar A$
+cancels once from the denominator and survives once in the numerator. $\mathrm{sF}_1$
+therefore decomposes exactly into how many of the right relationships were found times how
+well the found ones were described, with $\mathrm{sF}_1 \le F_{1,\mathrm{det}}$ and equality
+only if every matched pair is described perfectly. We report the triple
+$(F_{1,\mathrm{det}}, \bar A, \mathrm{sF}_1)$ rather than $\mathrm{sF}_1$ alone, since two
+models can reach the same composite score for very different reasons.
+
+\subsection{Results}
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{lccccc}
+    \toprule
+    Model & $P_{\mathrm{det}}$ & $R_{\mathrm{det}}$ & $F_{1,\mathrm{det}}$ & $\bar{A}$ & $\mathrm{sF}_1$ \\
+    \midrule
+    \textbf{Claude Opus 5} & 0.71 & 0.71 & 0.71 & 0.67 & \textbf{0.48} \\
+    GPT-5.6 Terra          & 1.00 & 0.43 & 0.60 & 0.73 & 0.44 \\
+    Claude Sonnet 5        & 1.00 & 0.43 & 0.60 & 0.67 & 0.40 \\
+    GPT-5.6 Luna Pro       & 1.00 & 0.36 & 0.53 & 0.60 & 0.32 \\
+    DeepSeek V4 Pro        & 0.86 & 0.43 & 0.57 & 0.47 & 0.27 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Identification, grid agreement, and composite score for the five models
+  benchmarked on the single annotated novel, sorted by $\mathrm{sF}_1$.}
+  \label{tab:model-results}
+\end{table}
+
+Claude Opus 5 recovers exactly seven tenths of the gold relationships, and recovers them
+evenly (precision and recall are both 0.71); together with a solid grid agreement
+($\bar A = 0.67$) this gives it the best composite score. The other four models are all
+perfectly precise (every relationship they propose is a real one, $P_{\mathrm{det}} = 1$),
+but each finds notably fewer of the fourteen gold relationships, which caps their recall
+and their composite scores below Claude Opus 5. Description quality among the models that
+do find relationships is fairly close ($\bar A$ between 0.47 and 0.73); none of the five
+gets every field right on any matched relationship ($\bar A = 1$ never occurs at the level
+of a full relationship in this pilot).
+
+On the strength of this pilot, \textbf{Claude Opus 5} is the model we carry forward for
+annotating the rest of the corpus, while keeping in mind that this ranking rests on a
+single novel and 14 gold relationships, and should be revisited once further novels are
+added to the gold standard.
+

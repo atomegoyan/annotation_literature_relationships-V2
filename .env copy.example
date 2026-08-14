@@ -1,0 +1,6 @@
+# Copy this file to .env and fill in your key. .env is git-ignored.
+#
+#   cp .env.example .env
+#
+# No quotes, no spaces around the "=".
+OPENROUTER_API_KEY=sk-or-v1-...

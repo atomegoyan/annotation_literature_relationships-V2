@@ -1,0 +1,369 @@
+﻿novel_id,title,author,year,filename,orientation,metadata_source
+adam_paienne,Paienne,Adam,,corpus_hetero/adam_paienne.txt,hetero,filename
+alanic_roses,Roses,Alanic,,corpus_hetero/alanic_roses.txt,hetero,filename
+anjou_dieu,Dieu,Anjou,,corpus_hetero/anjou_dieu.txt,hetero,filename
+dash_voleur,Voleur,Dash,,corpus_hetero/dash_voleur.txt,hetero,filename
+doff_jours,Jours,Doff,,corpus_hetero/doff_jours.txt,hetero,filename
+fleuriot_conge,Conge,Fleuriot,,corpus_hetero/fleuriot_conge.txt,hetero,filename
+gautier_cruautesamour,Les Cruautés de l’Amour,Judith Gautier,1879,corpus_hetero/gautier_cruautesamour.txt,hetero,header
+gautier_dragon,Le Dragon Impérial,Judith Gautier,1893,corpus_hetero/gautier_dragon.txt,hetero,header
+gautier_elephant,Elephant,Judith Gautier,,corpus_hetero/gautier_elephant.txt,hetero,filename
+gautier_fleursorient,Fleurs d’Orient,Judith Gautier,1893,corpus_hetero/gautier_fleursorient.txt,hetero,header
+gautier_isoline,Isoline et la Fleur Serpent,Judith Gautier,1882,corpus_hetero/gautier_isoline.txt,hetero,header
+gautier_lucienne,Lucienne,Judith Gautier,,corpus_hetero/gautier_lucienne.txt,hetero,filename
+gautier_paradis,La Conquête du paradis,Judith Gautier,1890,corpus_hetero/gautier_paradis.txt,hetero,header
+gautier_paravent,Le Paravent de soie et d’or,Judith Gautier,1904,corpus_hetero/gautier_paravent.txt,hetero,header
+gautier_usurpateur,L’Usurpateur,Judith Gautier,1875,corpus_hetero/gautier_usurpateur.txt,hetero,header
+gautier_vieux,Vieux,Judith Gautier,,corpus_hetero/gautier_vieux.txt,hetero,filename
+gouraud_quand,Quand,Gouraud,,corpus_hetero/gouraud_quand.txt,hetero,filename
+lesueur_droit,Droit,Lesueur,,corpus_hetero/lesueur_droit.txt,hetero,filename
+lesueur_meurtre,Meurtre,Lesueur,,corpus_hetero/lesueur_meurtre.txt,hetero,filename
+marais_maison,Maison,Marais,,corpus_hetero/marais_maison.txt,hetero,filename
+michel_memoires,"Mémoires de Louise Michel, écrits par elle-même",Louise Michel,1886,corpus_hetero/michel_memoires.txt,hetero,header
+murat_betedivine,La bête divine,Amélie Murat,1929,corpus_hetero/murat_betedivine.txt,hetero,header
+nanteuil_epave,Epave,Nanteuil,,corpus_hetero/nanteuil_epave.txt,hetero,filename
+navery_filledagobert,La fille du roi Dagobert,Raoul de Navery,1879,corpus_hetero/navery_filledagobert.txt,hetero,header
+navery_peruvienne,La péruvienne,Raoul de Navery,1879,corpus_hetero/navery_peruvienne.txt,hetero,header
+navery_robinsons,Les robinsons de Paris,Raoul de Navery,1879,corpus_hetero/navery_robinsons.txt,hetero,header
+navery_voyages,Les voyages de Camoens,Raoul de Navery,1880,corpus_hetero/navery_voyages.txt,hetero,header
+nizet_capitainevampire,Le Capitaine Vampire,Marie Nizet.,1879,corpus_hetero/nizet_capitainevampire.txt,hetero,header
+pearl_memoires,Cora Pearl,Mémoires de Cora Pearl,1886,corpus_hetero/pearl_memoires.txt,hetero,header
+peyebrune_victoirerouge,Victoirerouge,Peyebrune,,corpus_hetero/peyebrune_victoirerouge.txt,hetero,filename
+sand_laurence,Laurence,Sand,,corpus_hetero/sand_laurence.txt,hetero,filename
+segur_pluie,Pluie,Segur,,corpus_hetero/segur_pluie.txt,hetero,filename
+tinayre_amourpleure,L’Amour qui pleure,Marcelle Tinayre,1908,corpus_hetero/tinayre_amourpleure.txt,hetero,header
+tinayre_autographe,Autographe,Marcelle Tinayre,,corpus_hetero/tinayre_autographe.txt,hetero,filename
+tinayre_avant,Avant,Marcelle Tinayre,,corpus_hetero/tinayre_avant.txt,hetero,filename
+tinayre_chanson,Chanson,Marcelle Tinayre,,corpus_hetero/tinayre_chanson.txt,hetero,filename
+tinayre_chaussons,Chaussons,Marcelle Tinayre,,corpus_hetero/tinayre_chaussons.txt,hetero,filename
+tinayre_figuresnuit,Marcelle Tinayre,Figures dans la nuit (Tinayre),1926,corpus_hetero/tinayre_figuresnuit.txt,hetero,header
+tinayre_helle,Hellé,Marcelle Tinayre,1909,corpus_hetero/tinayre_helle.txt,hetero,header
+tinayre_maisonpeche,La Maison du péché,Marcelle Tinayre,1902,corpus_hetero/tinayre_maisonpeche.txt,hetero,header
+tinayre_oiseauorage,L’Oiseau d’orage,Marcelle Tinayre,1901,corpus_hetero/tinayre_oiseauorage.txt,hetero,header
+tinayre_portroyal,Une journée de Port-Royal-des-Champs,Marcelle Tinayre,1902,corpus_hetero/tinayre_portroyal.txt,hetero,header
+tinayre_rancon,La Rançon,Marcelle Tinayre,1894,corpus_hetero/tinayre_rancon.txt,hetero,header
+tinayre_rebelle,La Rebelle,Marcelle Tinayre,1906,corpus_hetero/tinayre_rebelle.txt,hetero,header
+yver_bergerie,La Bergerie,Colette Yver,1903,corpus_hetero/yver_bergerie.txt,hetero,header
+yver_cervelines,Les Cervelines,Colette Yver,1903,corpus_hetero/yver_cervelines.txt,hetero,header
+yver_coinvoile,Un coin du voile,Colette Yver,1912,corpus_hetero/yver_coinvoile.txt,hetero,header
+yver_cousinsriches,Les Cousins riches,Colette Yver,,corpus_hetero/yver_cousinsriches.txt,hetero,header
+yver_damespalais,Les Dames du palais,Colette Yver,,corpus_hetero/yver_damespalais.txt,hetero,header
+yver_metierroi,Le Métier de roi,Colette Yver,,corpus_hetero/yver_metierroi.txt,hetero,header
+yver_mirabelle,Mirabelle de Pampelune,Colette Yver,1900,corpus_hetero/yver_mirabelle.txt,hetero,header
+yver_pensionsphynx,La Pension du Sphinx,Colette Yver,1901,corpus_hetero/yver_pensionsphynx.txt,hetero,header
+yver_princessesscience,Princesses de science,Colette Yver,1907,corpus_hetero/yver_princessesscience.txt,hetero,header
+yver_reines,Comment s’en vont les reines,Colette Yver,1905,corpus_hetero/yver_reines.txt,hetero,header
+yver_sablesmouvants,Les Sables mouvants,Colette Yver,,corpus_hetero/yver_sablesmouvants.txt,hetero,header
+aicard_illustremaurin,L’Illustre Maurin,Jean Aicard,1908,corpus_homhet/aicard_illustremaurin.txt,homhet,header
+aicard_marinmaures,Maurin des Maures,Jean Aicard,1908,corpus_homhet/aicard_marinmaures.txt,homhet,header
+bazin_barriere,La Barrière,René Bazin,1909,corpus_homhet/bazin_barriere.txt,homhet,header
+bazin_defoucauld,"Charles de Foucauld, explorateur du Maroc, ermite au Sahara",René Bazin,1921,corpus_homhet/bazin_defoucauld.txt,homhet,header
+bazin_espagne,Terre d’Espagne,René Bazin,1895,corpus_homhet/bazin_espagne.txt,homhet,header
+bazin_italiens,Les Italiens d’aujourd’hui,René Bazin,1893,corpus_homhet/bazin_italiens.txt,homhet,header
+bazin_terremeurt,La Terre qui meurt,René Bazin,1926,corpus_homhet/bazin_terremeurt.txt,homhet,header
+bourges_crepusculedieux,Le Crépuscule des dieux,Élémir Bourges,1884,corpus_homhet/bourges_crepusculedieux.txt,homhet,header
+bourges_hache,Sous la hache,Élémir Bourges,1885,corpus_homhet/bourges_hache.txt,homhet,header
+bourges_oiseauxfleurs,Oiseauxfleurs,Élémir Bourges,,corpus_homhet/bourges_oiseauxfleurs.txt,homhet,filename
+chavette_oreillecocher,L'oreille du cocher,Eugène Chavette,1883,corpus_homhet/chavette_oreillecocher.txt,homhet,header
+chavette_seulbellesmeres,La conquête d'une cuisinière I,Eugène Chavette,,corpus_homhet/chavette_seulbellesmeres.txt,homhet,header
+chavette_tombeurcranes,Tombeurcranes,Eugène Chavette,,corpus_homhet/chavette_tombeurcranes.txt,homhet,filename
+claretie_bouddha,Bouddha,Jules Claretie,1888,corpus_homhet/claretie_bouddha.txt,homhet,header
+claretie_catissou,Catissou,Jules Claretie,1887,corpus_homhet/claretie_catissou.txt,homhet,header
+claretie_frontiere,La Frontière,Jules Claretie,1894,corpus_homhet/claretie_frontiere.txt,homhet,header
+claretie_monsieurministre,Monsieurministre,Jules Claretie,,corpus_homhet/claretie_monsieurministre.txt,homhet,filename
+deregnier_altana,"L'Altana, ou la Vie vénitienne - T.1",Henri de Régnier,1928,corpus_homhet/deregnier_altana.txt,homhet,header
+deregnier_bonheursperdus,Les bonheurs perdus,Henri de Régnier,1924,corpus_homhet/deregnier_bonheursperdus.txt,homhet,header
+deregnier_divertissementprovincial,Le divertissement provincial : roman,Henri de Régnier,1925,corpus_homhet/deregnier_divertissementprovincial.txt,homhet,header
+deregnier_illusionheroique,L'illusion héroïque de Tito Bassi : roman,Henri de Régnier,1916,corpus_homhet/deregnier_illusionheroique.txt,homhet,header
+deregnier_imagesvenitiennes,Images vénitiennes,Henri de Régnier,,corpus_homhet/deregnier_imagesvenitiennes.txt,homhet,header
+deregnier_passevivant,Le passé vivant : roman moderne (8e édition),Henri de Régnier,1905,corpus_homhet/deregnier_passevivant.txt,homhet,header
+deregnier_romainemirmault,Romaine Mirmault : roman,Henri de Régnier,1914,corpus_homhet/deregnier_romainemirmault.txt,homhet,header
+deregnier_vacances,Les vacances d'un jeune homme sage : roman,Henri de Régnier,1903,corpus_homhet/deregnier_vacances.txt,homhet,header
+dereigner_luifemmes,"Lui, ou Les femmes et l'amour ; Donc ; Paray-le-Monial",Henri de Régnier,1929,corpus_homhet/dereigner_luifemmes.txt,homhet,header
+france_anneauamethyste,L’Anneau d’améthyste Éd. rev. et corr. par l'auteur,Anatole France,1924,corpus_homhet/france_anneauamethyste.txt,homhet,header
+france_autelspeur,Les Autels de la peur,Anatole France,1884,corpus_homhet/france_autelspeur.txt,homhet,header
+france_balthasar,Balthasar (recueil),Anatole France,1928,corpus_homhet/france_balthasar.txt,homhet,header
+france_bergeretparis,Bergeretparis,Anatole France,,corpus_homhet/france_bergeretparis.txt,homhet,filename
+france_chatmaigre,Le Chat maigre,Anatole France,1921,corpus_homhet/france_chatmaigre.txt,homhet,header
+france_contestournebroche,Les Contes de Jacques Tournebroche [suivi de] Sous l'invocation de Clio,Anatole France,1921,corpus_homhet/france_contestournebroche.txt,homhet,header
+france_crainquebille,Crainquebille,Anatole France,,corpus_homhet/france_crainquebille.txt,homhet,filename
+france_crimesylvestre,Le Crime de Sylvestre Bonnard,Anatole France,1896,corpus_homhet/france_crimesylvestre.txt,homhet,header
+france_desirsjean,Les Désirs de Jean Servien,Anatole France,1921,corpus_homhet/france_desirsjean.txt,homhet,header
+france_dieuxsoif,Les dieux ont soif,Anatole France,1912,corpus_homhet/france_dieuxsoif.txt,homhet,header
+france_enfants,Nos enfants,Anatole France,1887,corpus_homhet/france_enfants.txt,homhet,header
+france_etuinacre,L’Étui de nacre,Anatole France,1899,corpus_homhet/france_etuinacre.txt,homhet,header
+france_femmesbarbebleue,Les Sept Femmes de la Barbe-Bleue et autres contes merveilleux,Anatole France,1909,corpus_homhet/france_femmesbarbebleue.txt,homhet,header
+france_fillesgarcons,Filles et garçons Scènes de la Ville et des Champs,Anatole France,1915,corpus_homhet/france_fillesgarcons.txt,homhet,header
+france_ilepingouins,L’Île des Pingouins,Anatole France,1908,corpus_homhet/france_ilepingouins.txt,homhet,header
+france_jocaste,Jocaste,Anatole France,1921,corpus_homhet/france_jocaste.txt,homhet,header
+france_livreami,Le Livre de mon ami,Anatole France,1890,corpus_homhet/france_livreami.txt,homhet,header
+france_lysrouge,Le Lys rouge,Anatole France,1894,corpus_homhet/france_lysrouge.txt,homhet,header
+france_mannequinosier,Le Mannequin d’osier,Anatole France,1925,corpus_homhet/france_mannequinosier.txt,homhet,header
+france_opinionsjerome,Les Opinions de M. Jérôme Coignard recueillies par Jacques Tournebroche,Anatole France,1920,corpus_homhet/france_opinionsjerome.txt,homhet,header
+france_ormemail,I. L’Orme du mail,Anatole FranceHistoire contemporaine,,corpus_homhet/france_ormemail.txt,homhet,header
+france_petitpierre,Le Petit Pierre,Anatole France,1921,corpus_homhet/france_petitpierre.txt,homhet,header
+france_pierrenoziere,Pierre Nozière,Anatole France,1899,corpus_homhet/france_pierrenoziere.txt,homhet,header
+france_revolteanges,La Révolte des anges,Anatole France,1914,corpus_homhet/france_revolteanges.txt,homhet,header
+france_thais,Thaïs nouvelle édition revue et corrigée par l’auteur,Anatole France,1922,corpus_homhet/france_thais.txt,homhet,header
+france_viefleur,La Vie en fleur - éd. rev. et corr. par l’auteur,Anatole France,1924,corpus_homhet/france_viefleur.txt,homhet,header
+huysmans_arebours,À rebours,Joris-Karl Huysmans,1922,corpus_homhet/huysmans_arebours.txt,homhet,header
+huysmans_enrade,En rade,Joris-Karl Huysmans,1928,corpus_homhet/huysmans_enrade.txt,homhet,header
+huysmans_marthe,"Marthe, histoire d’une fille",Joris-Karl Huysmans,1876,corpus_homhet/huysmans_marthe.txt,homhet,header
+huysmans_sacaudos,Sac au dos,Joris-Karl Huysmans,1880,corpus_homhet/huysmans_sacaudos.txt,homhet,header
+huysmans_soeursvatard,Soeursvatard,Joris-Karl Huysmans,,corpus_homhet/huysmans_soeursvatard.txt,homhet,filename
+huysmans_troiseglises,Trois églises et trois primitifs,Joris-Karl Huysmans,1908,corpus_homhet/huysmans_troiseglises.txt,homhet,header
+lermina_effrayanteaventure,L’Effrayante Aventure,Jules Lermina,1913,corpus_homhet/lermina_effrayanteaventure.txt,homhet,header
+lermina_lenigme,L’Énigme,Jules Lermina,1895,corpus_homhet/lermina_lenigme.txt,homhet,header
+leroy_damnationsaintguynefort,La Damnation de Saint Guynefort,Eugène Le Roy,1902,corpus_homhet/leroy_damnationsaintguynefort.txt,homhet,header
+leroy_ennemimort,L’Ennemi de la mort,Eugène Le Roy,1912,corpus_homhet/leroy_ennemimort.txt,homhet,header
+leroy_gensdauberoque,Les Gens d’Auberoque,Eugène Le Roy,1906,corpus_homhet/leroy_gensdauberoque.txt,homhet,header
+leroy_jacquoucroquant,Jacquou le Croquant,Eugène Le Roy,1899,corpus_homhet/leroy_jacquoucroquant.txt,homhet,header
+leroy_mademoiselleralphie,Mademoiselle de la Ralphie,Eugène Le Roy,1906,corpus_homhet/leroy_mademoiselleralphie.txt,homhet,header
+leroy_moulinfrau,Le Moulin du Frau,Eugène Le Roy,1891,corpus_homhet/leroy_moulinfrau.txt,homhet,header
+leroy_nicettemilou,Nicette et Milou,Eugène Le Roy,1901,corpus_homhet/leroy_nicettemilou.txt,homhet,header
+leroy_payspierres,Au pays des pierres (Eugène Le Roy),Eugène Le Roy,1906,corpus_homhet/leroy_payspierres.txt,homhet,header
+malot_enfamille,En famille,Hector Malot,1893,corpus_homhet/malot_enfamille.txt,homhet,header
+malot_sansfamille,Sans famille,Hector Malot,,corpus_homhet/malot_sansfamille.txt,homhet,header
+maupassant_becasse,Contes de la bécasse,Guy de Maupassant,1894,corpus_homhet/maupassant_becasse.txt,homhet,header
+maupassant_belami,Bel-Ami,Guy de Maupassant,1901,corpus_homhet/maupassant_belami.txt,homhet,header
+maupassant_boulesuif,Boule de suif (recueil),Guy de Maupassant,1907,corpus_homhet/maupassant_boulesuif.txt,homhet,header
+maupassant_clairlune,Clair de lune,Guy de Maupassant,1884,corpus_homhet/maupassant_clairlune.txt,homhet,header
+maupassant_coeur,Notre Cœur,Guy de Maupassant,1902,corpus_homhet/maupassant_coeur.txt,homhet,header
+maupassant_contesjournuit,Contes du jour et de la nuit,Guy de Maupassant,1885,corpus_homhet/maupassant_contesjournuit.txt,homhet,header
+maupassant_fifi,Mademoiselle Fifi,Guy de Maupassant,1898,corpus_homhet/maupassant_fifi.txt,homhet,header
+maupassant_fortmort,Fort comme la mort,Guy de Maupassant,1889,corpus_homhet/maupassant_fortmort.txt,homhet,header
+maupassant_harriet,Miss Harriet,Guy de Maupassant,1907,corpus_homhet/maupassant_harriet.txt,homhet,header
+maupassant_horla,Le Horla,Guy de Maupassant,1895,corpus_homhet/maupassant_horla.txt,homhet,header
+maupassant_maisontellier,La Maison Tellier - (nouvelle édition augmentée),Guy de Maupassant,1891,corpus_homhet/maupassant_maisontellier.txt,homhet,header
+maupassant_monsieurparent,Monsieur Parent,Guy de Maupassant,1886,corpus_homhet/maupassant_monsieurparent.txt,homhet,header
+maupassant_peremilon,Le Père Milon (recueil),Guy de Maupassant,1899,corpus_homhet/maupassant_peremilon.txt,homhet,header
+maupassant_pierrejean,Pierre et Jean,Guy de Maupassant,,corpus_homhet/maupassant_pierrejean.txt,homhet,header
+maupassant_roque,La Petite Roque (recueil) Œuvres complètes de Guy de Maupassant,Guy de Maupassant,1909,corpus_homhet/maupassant_roque.txt,homhet,header
+maupassant_rosiermadame,Le Rosier de Madame Husson,Guy de Maupassant,1902,corpus_homhet/maupassant_rosiermadame.txt,homhet,header
+maupassant_soeursrondoli,Les Sœurs Rondoli,Guy de Maupassant,1904,corpus_homhet/maupassant_soeursrondoli.txt,homhet,header
+maupassant_toine,Toine (recueil),Guy de Maupassant,1908,corpus_homhet/maupassant_toine.txt,homhet,header
+maupassant_vie,Une vie (L’Humble Vérité),Guy de Maupassant,1883,corpus_homhet/maupassant_vie.txt,homhet,header
+maupassant_yvette,Yvette,Guy de Maupassant,1902,corpus_homhet/maupassant_yvette.txt,homhet,header
+mendes_crimevieuxblas,Le Crime du vieux Blas,Catulle Mendès,1882,corpus_homhet/mendes_crimevieuxblas.txt,homhet,header
+mendes_mephistophela,Méphistophéla,Catulle Mendès,1890,corpus_homhet/mendes_mephistophela.txt,homhet,header
+mendes_oiseauxbleus,Les Oiseaux bleus,Catulle Mendès,1888,corpus_homhet/mendes_oiseauxbleus.txt,homhet,header
+mendes_roivierge,Le Roi vierge,Catulle Mendès,1881,corpus_homhet/mendes_roivierge.txt,homhet,header
+mirbeau_628E8,La 628-E8,Octave Mirbeau,1907,corpus_homhet/mirbeau_628E8.txt,homhet,header
+mirbeau_abbejules,Abbejules,Octave Mirbeau,,corpus_homhet/mirbeau_abbejules.txt,homhet,filename
+mirbeau_calvaire,Le Calvaire,Octave Mirbeau,1887,corpus_homhet/mirbeau_calvaire.txt,homhet,header
+mirbeau_dingo,Dingo,Octave Mirbeau,1913,corpus_homhet/mirbeau_dingo.txt,homhet,header
+mirbeau_gentilhomme,Un gentilhomme,Octave Mirbeau,1920,corpus_homhet/mirbeau_gentilhomme.txt,homhet,header
+mirbeau_jardinsupplices,Le Jardin des supplices,Octave Mirbeau,1904,corpus_homhet/mirbeau_jardinsupplices.txt,homhet,header
+mirbeau_journalfemmechambre,Le Journal d’une femme de chambre,Octave Mirbeau,1920,corpus_homhet/mirbeau_journalfemmechambre.txt,homhet,header
+mirbeau_lettreschaumiere,Lettres de ma chaumière,Octave Mirbeau,1886,corpus_homhet/mirbeau_lettreschaumiere.txt,homhet,header
+mirbeau_memoiresami,Les mémoires de mon ami,Octave Mirbeau,1919,corpus_homhet/mirbeau_memoiresami.txt,homhet,header
+mirbeau_mortbalzac,Mortbalzac,Octave Mirbeau,,corpus_homhet/mirbeau_mortbalzac.txt,homhet,filename
+mirbeau_pipecidre,La Pipe de cidre (recueil),Octave Mirbeau,1919,corpus_homhet/mirbeau_pipecidre.txt,homhet,header
+mirbeau_sebastienroch,Sébastien Roch,Octave Mirbeau,1890,corpus_homhet/mirbeau_sebastienroch.txt,homhet,header
+mirbeau_vachetachetee,La Vache tachetée (recueil),Octave Mirbeau,1921,corpus_homhet/mirbeau_vachetachetee.txt,homhet,header
+montepin_porteusepain,La porteuse de pain,Xavier de Montépin,1903,corpus_homhet/montepin_porteusepain.txt,homhet,header
+moreas_paysagessentiments,Paysages et sentiments,Jean Moréas,1906,corpus_homhet/moreas_paysagessentiments.txt,homhet,header
+moreas_varitions,Variations sur la vie et les livres : Mme de La Fayette ; la Vallée-aux-loups ; l'Épitaphe de Rabelais ; la Mort et l'amitié ; le Comédien ; Goethe et Shakespeare ; Voltaire et la tragédie,Jean Moréas,1910,corpus_homhet/moreas_varitions.txt,homhet,header
+ohnet_amepierre,L’âme de Pierre,Georges Ohnet,1890,corpus_homhet/ohnet_amepierre.txt,homhet,header
+ohnet_grandemarniere,La Grande Marnière,Georges Ohnet,1885,corpus_homhet/ohnet_grandemarniere.txt,homhet,header
+ohnet_maitreforges,Le maître de forges,Georges Ohnet,1882,corpus_homhet/ohnet_maitreforges.txt,homhet,header
+rochefort_depraves,Les dépravés,Henri Rochefort,1876,corpus_homhet/rochefort_depraves.txt,homhet,header
+samain_divinebontemps,Divinebontemps,Samain,,corpus_homhet/samain_divinebontemps.txt,homhet,filename
+samain_hyalis,Hyalis,Samain,,corpus_homhet/samain_hyalis.txt,homhet,filename
+samain_rovereangisele,Rovereangisele,Samain,,corpus_homhet/samain_rovereangisele.txt,homhet,filename
+samain_xanthis,Xanthis,Samain,,corpus_homhet/samain_xanthis.txt,homhet,filename
+vibert_berceau,Mon berceau,Paul Vibert,1893,corpus_homhet/vibert_berceau.txt,homhet,header
+zola_argent,L’Argent,Émile Zola,1891,corpus_homhet/zola_argent.txt,homhet,header
+zola_assomoir,L’Assommoir,Émile Zola,1877,corpus_homhet/zola_assomoir.txt,homhet,header
+zola_attaquemoulin,L’Attaque du moulin,Émile Zola,1880,corpus_homhet/zola_attaquemoulin.txt,homhet,header
+zola_betehumaine,Betehumaine,Émile Zola,,corpus_homhet/zola_betehumaine.txt,homhet,filename
+zola_bonheurdames,Au bonheur des dames,Émile Zola,1883,corpus_homhet/zola_bonheurdames.txt,homhet,header
+zola_capitaineburle,Le Capitaine Burle (Recueil),Émile Zola,1883,corpus_homhet/zola_capitaineburle.txt,homhet,header
+zola_conqueteplassans,La Conquête de Plassans Les Rougon-Macquart,Émile Zola,1879,corpus_homhet/zola_conqueteplassans.txt,homhet,header
+zola_curee,La Curée,Émile Zola,1871,corpus_homhet/zola_curee.txt,homhet,header
+zola_debacle,La Débâcle,Émile Zola,1892,corpus_homhet/zola_debacle.txt,homhet,header
+zola_docteurpascal,Le Docteur Pascal,Émile Zola,1893,corpus_homhet/zola_docteurpascal.txt,homhet,header
+zola_excellence,Son Excellence Eugène Rougon,Émile Zola,1876,corpus_homhet/zola_excellence.txt,homhet,header
+zola_fauteabbemouret,La Faute de l’abbé Mouret Les Rougon-Macquart,Émile Zola,1875,corpus_homhet/zola_fauteabbemouret.txt,homhet,header
+zola_fortune,La Fortune des Rougon,Émile Zola,1871,corpus_homhet/zola_fortune.txt,homhet,header
+zola_germinal,Germinal,Émile Zola,,corpus_homhet/zola_germinal.txt,homhet,filename
+zola_joievivre,La Joie de vivre,Émile Zola,1884,corpus_homhet/zola_joievivre.txt,homhet,header
+zola_nana,Nana,Émile Zola,1880,corpus_homhet/zola_nana.txt,homhet,header
+zola_oeuvre,L’Œuvre Les Rougon-Macquart,Émile Zola,1886,corpus_homhet/zola_oeuvre.txt,homhet,header
+zola_potbouille,Pot-Bouille,Émile Zola,1882,corpus_homhet/zola_potbouille.txt,homhet,header
+zola_reve,Le Rêve Les Rougon-Macquart,Émile Zola,1888,corpus_homhet/zola_reve.txt,homhet,header
+zola_terre,La Terre,Émile Zola,1887,corpus_homhet/zola_terre.txt,homhet,header
+zola_ventre,Le Ventre de Paris,Émile Zola,1873,corpus_homhet/zola_ventre.txt,homhet,header
+cocteau_grandecart,Grandecart,JEAN COCTEAU,,corpus_homosexuels/cocteau_grandecart.txt,homosexuels,filename
+cocteau_livreblanc,Le Livre Blanc,Jean Cocteau (1889 - 1963),1930,corpus_homosexuels/cocteau_livreblanc.txt,homosexuels,header
+cocteau_secret,Le Secret professionnel,JEAN COCTEAU,1922,corpus_homosexuels/cocteau_secret.txt,homosexuels,header
+cocteau_thomas,THOMAS L'IMPOSTEUR,JEAN COCTEAU,,corpus_homosexuels/cocteau_thomas.txt,homosexuels,header
+dadelswardfersen_feumer,Et le feu s’éteignit sur la mer…,Jacques d’Adelswärd-Fersen,1909,corpus_homosexuels/dadelswardfersen_feumer.txt,homosexuels,header
+dadelswardfersen_messes,Messes noires ; Lord Lyllian,Jacques d’Adelswärd-Fersen,1905,corpus_homosexuels/dadelswardfersen_messes.txt,homosexuels,header
+dadelswardfersen_narcisse,Narcisse,Jacques d’Adelswärd-Fersen,,corpus_homosexuels/dadelswardfersen_narcisse.txt,homosexuels,filename
+dadelswardfersen_notredame,Notre-Dame des mers mortes (Venise),Jacques d’Adelswärd-Fersen,1902,corpus_homosexuels/dadelswardfersen_notredame.txt,homosexuels,header
+demontesquiou_mademoiselle,MADEMOISELLE,ROBERT DE MONTESQUIOU,,corpus_homosexuels/demontesquiou_mademoiselle.txt,homosexuels,header
+essebac_elu,L’Élu,Achille Essebac,,corpus_homosexuels/essebac_elu.txt,homosexuels,header
+essebac_luc,Luc,Achille Essebac,1902,corpus_homosexuels/essebac_luc.txt,homosexuels,header
+gide_buveursdame,Buveursdame,André Gide,,corpus_homosexuels/gide_buveursdame.txt,homosexuels,filename
+gide_caracteres,Caractères,André Gide,1925,corpus_homosexuels/gide_caracteres.txt,homosexuels,header
+gide_corydon,Corydon,André Gide,1925,corpus_homosexuels/gide_corydon.txt,homosexuels,header
+gide_esprit,Un esprit non prévenu,André Gide,1929,corpus_homosexuels/gide_esprit.txt,homosexuels,header
+gide_fauxmonnayeurs,Les Faux-monnayeurs,André Gide,1925,corpus_homosexuels/gide_fauxmonnayeurs.txt,homosexuels,header
+gide_immoraliste,L’Immoraliste,André Gide,1902,corpus_homosexuels/gide_immoraliste.txt,homosexuels,header
+gide_isabelle,Isabelle,André Gide,1921,corpus_homosexuels/gide_isabelle.txt,homosexuels,header
+gide_journalfauxmonnayeurs,Journal des Faux-monnayeurs,André Gide,1926,corpus_homosexuels/gide_journalfauxmonnayeurs.txt,homosexuels,header
+gide_narcisse,Le Traité du Narcisse,André Gide,,corpus_homosexuels/gide_narcisse.txt,homosexuels,header
+gide_nourritures,Les Nourritures terrestres,André Gide,1897,corpus_homosexuels/gide_nourritures.txt,homosexuels,header
+gide_numquid,Numquid et tu ?…,André Gide,1926,corpus_homosexuels/gide_numquid.txt,homosexuels,header
+gide_porteetroite,La Porte étroite,André Gide,,corpus_homosexuels/gide_porteetroite.txt,homosexuels,header
+gide_promethee,Le Prométhée mal enchaîné,André Gide,1899,corpus_homosexuels/gide_promethee.txt,homosexuels,header
+gide_retourenfant,Le Retour de l’enfant prodigue,André Gide,1907,corpus_homosexuels/gide_retourenfant.txt,homosexuels,header
+gide_symphoniepastorale,La Symphonie pastorale,André Gide,1919,corpus_homosexuels/gide_symphoniepastorale.txt,homosexuels,header
+gide_tentative,La Tentative amoureuse ou le Traité du vain désir,André Gide,1922,corpus_homosexuels/gide_tentative.txt,homosexuels,header
+lorrain_bougrelon,Bougrelon,Jean Lorrain,,corpus_homosexuels/lorrain_bougrelon.txt,homosexuels,filename
+lorrain_dameturque,Dameturque,Jean Lorrain,,corpus_homosexuels/lorrain_dameturque.txt,homosexuels,filename
+lorrain_maisonphilibert,La maison Philibert,Jean Lorrain,1904,corpus_homosexuels/lorrain_maisonphilibert.txt,homosexuels,header
+lorrain_phocas,Phocas,Jean Lorrain,,corpus_homosexuels/lorrain_phocas.txt,homosexuels,filename
+lorrain_russe,Russe,Jean Lorrain,,corpus_homosexuels/lorrain_russe.txt,homosexuels,filename
+lorrain_sonyeuse,Sonyeuse,Jean Lorrain,1891,corpus_homosexuels/lorrain_sonyeuse.txt,homosexuels,header
+louys_aphrodite,Aphrodite – Mœurs antiques,Pierre Louÿs,1896,corpus_homosexuels/louys_aphrodite.txt,homosexuels,header
+louys_aphroditelibre,"Aphrodite, (version libre)",Pierre Louÿs,,corpus_homosexuels/louys_aphroditelibre.txt,homosexuels,header
+louys_archipel,"Œuvres complètes de Pierre Louÿs, 1929 - 1931, tome 11 Archipel, précédé de : Dialogue sur la danse",Pierre Louÿs,1929,corpus_homosexuels/louys_archipel.txt,homosexuels,header
+louys_contes,"Contes, précédés de : Les trois roses de Marie-Anne",Pierre Louÿs,1929,corpus_homosexuels/louys_contes.txt,homosexuels,header
+louys_crepusculenymphes,"Le Crépuscule des nymphes, suivies de Lectures antiques",Pierre Louÿs,1894,corpus_homosexuels/louys_crepusculenymphes.txt,homosexuels,header
+louys_dialogues,Douze douzains de dialogues ou Petites scènes amoureuses,Pierre Louÿs,1927,corpus_homosexuels/louys_dialogues.txt,homosexuels,header
+louys_femmeetpantin,"La Femme et le pantin, suivi de Voyage en Espagne",Pierre Louÿs,1898,corpus_homosexuels/louys_femmeetpantin.txt,homosexuels,header
+louys_journalintime,Journalintime,Pierre Louÿs,,corpus_homosexuels/louys_journalintime.txt,homosexuels,filename
+louys_juges,Au temps des Juges,Pierre Louÿs,,corpus_homosexuels/louys_juges.txt,homosexuels,header
+louys_litterature,"Littérature, suivie de Livres anciens et de Inscriptions et belles lettres",Pierre Louÿs,1929,corpus_homosexuels/louys_litterature.txt,homosexuels,header
+louys_manuelcivilite,Manuel de civilité pour les petites filles à l’usage des maisons d’éducation,Pierre Louÿs,1919,corpus_homosexuels/louys_manuelcivilite.txt,homosexuels,header
+louys_poetiquetheatre,"Poëtique, suivie de Théâtre, Projets et fragments ; Suite à Poëtique",Pierre Louÿs,1929,corpus_homosexuels/louys_poetiquetheatre.txt,homosexuels,header
+louys_pourpre,Pourpre,Pierre Louÿs,,corpus_homosexuels/louys_pourpre.txt,homosexuels,filename
+louys_psyche,Psyché,Pierre Louÿs,1927,corpus_homosexuels/louys_psyche.txt,homosexuels,header
+louys_pybrac,Pybrac,Pierre Louÿs,,corpus_homosexuels/louys_pybrac.txt,homosexuels,header
+louys_roigonzalve,Histoire du roi Gonzalve et des douze princesses,Pierre Louÿs,1927,corpus_homosexuels/louys_roigonzalve.txt,homosexuels,header
+louys_roipausole,Les Aventures du roi Pausole,Pierre Louÿs,1901,corpus_homosexuels/louys_roipausole.txt,homosexuels,header
+louys_troisfilles,Trois filles de leur mère - Préface de Catherine Caubère,Pierre Louÿs,1926,corpus_homosexuels/louys_troisfilles.txt,homosexuels,header
+louys_volupte,"Œuvres complètes de Pierre Louÿs, 1929 - 1931, tome 7",Pierre Louÿs,1929,corpus_homosexuels/louys_volupte.txt,homosexuels,header
+proust_albertine,À la recherche du temps perdu - Albertine disparue,Marcel Proust,1925,corpus_homosexuels/proust_albertine.txt,homosexuels,header
+proust_fillesfleur,À la recherche du temps perdu - À l’ombre des jeunes filles en fleurs,Marcel Proust,1919,corpus_homosexuels/proust_fillesfleur.txt,homosexuels,header
+proust_guermantes,À la recherche du temps perdu - Le Côté de Guermantes,Marcel Proust,1920,corpus_homosexuels/proust_guermantes.txt,homosexuels,header
+proust_pastiches,Pastiches et Mélanges,Marcel Proust,1921,corpus_homosexuels/proust_pastiches.txt,homosexuels,header
+proust_plaisirs,Les Plaisirs et les Jours,Marcel Proust,1896,corpus_homosexuels/proust_plaisirs.txt,homosexuels,header
+proust_prisonnieres,À la recherche du temps perdu - La Prisonnière,Marcel Proust,1923,corpus_homosexuels/proust_prisonnieres.txt,homosexuels,header
+proust_sodome,À la recherche du temps perdu - Sodome et Gomorrhe,Marcel Proust,1921,corpus_homosexuels/proust_sodome.txt,homosexuels,header
+proust_swann,À la recherche du temps perdu - Du côté de chez Swann,Marcel Proust,1913,corpus_homosexuels/proust_swann.txt,homosexuels,header
+proust_tempsretrouve,À la recherche du temps perdu - Le Temps retrouvé,Marcel Proust,1927,corpus_homosexuels/proust_tempsretrouve.txt,homosexuels,header
+radiguet_bal,Le Bal du comte d’Orgel,Raymond Radiguet,1924,corpus_homosexuels/radiguet_bal.txt,homosexuels,header
+radiguet_diable,Le Diable au corps,Raymond Radiguet,1923,corpus_homosexuels/radiguet_diable.txt,homosexuels,header
+schwaeble_sataniste,Le sataniste flagellé,René Schwaeblé,1912,corpus_homosexuels/schwaeble_sataniste.txt,homosexuels,header
+cliffordbarney_amazone,D'UNE,NATALIE CLIFFORD BARNEY,,corpus_lesbiennes/cliffordbarney_amazone.txt,lesbiennes,header
+cliffordbarney_aventures,Aventures,NATALIE CLIFFORD BARNEY,,corpus_lesbiennes/cliffordbarney_aventures.txt,lesbiennes,filename
+cliffordbarney_framboises,Framboises,NATALIE CLIFFORD BARNEY,,corpus_lesbiennes/cliffordbarney_framboises.txt,lesbiennes,filename
+cliffordbarney_souvenirs,Souvenirs,NATALIE CLIFFORD BARNEY,,corpus_lesbiennes/cliffordbarney_souvenirs.txt,lesbiennes,filename
+colette_apprentissages,Mes apprentissages - Ce que Claudine n’a pas dit,Colette,1936,corpus_lesbiennes/colette_apprentissages.txt,lesbiennes,header
+colette_aventures,Œuvres complètes de Colette (éd. Le Fleuron) tome VI,Colette,1950,corpus_lesbiennes/colette_aventures.txt,lesbiennes,header
+colette_bellavista,Bellavista,Colette,,corpus_lesbiennes/colette_bellavista.txt,lesbiennes,filename
+colette_bleherbe,Le Blé en herbe roman,Colette,1923,corpus_lesbiennes/colette_bleherbe.txt,lesbiennes,header
+colette_chambre,La Chambre éclairée,Colette (Colette Willy),1920,corpus_lesbiennes/colette_chambre.txt,lesbiennes,header
+colette_chatte,La Chatte - roman,Colette,1933,corpus_lesbiennes/colette_chatte.txt,lesbiennes,header
+colette_cheri,Chéri roman,Colette,1927,corpus_lesbiennes/colette_cheri.txt,lesbiennes,header
+colette_claudineecole,Claudineecole,Colette,,corpus_lesbiennes/colette_claudineecole.txt,lesbiennes,filename
+colette_claudinemenage,Claudinemenage,Colette,,corpus_lesbiennes/colette_claudinemenage.txt,lesbiennes,filename
+colette_claudineparis,Claudine à Paris Quatre-vingt-douzième édition,Colette en collaboration avec Willy,1903,corpus_lesbiennes/colette_claudineparis.txt,lesbiennes,header
+colette_claudineva,Claudine s’en va (Journal d’Annie),Colette en collaboration avec Willy,1903,corpus_lesbiennes/colette_claudineva.txt,lesbiennes,header
+colette_duo,Duo,Colette,1960,corpus_lesbiennes/colette_duo.txt,lesbiennes,header
+colette_egarementsminne,Les Égarements de Minne Deuxième édition,Colette en collaboration avec Willy,1905,corpus_lesbiennes/colette_egarementsminne.txt,lesbiennes,header
+colette_entrave,L’Entrave Suite de « La Vagabonde »,Colette (Colette Willy),1913,corpus_lesbiennes/colette_entrave.txt,lesbiennes,header
+colette_enversmusic,L’Envers du Music-Hall,Colette (Colette Willy),1926,corpus_lesbiennes/colette_enversmusic.txt,lesbiennes,header
+colette_etoilevesper,L’Étoile Vesper,Colette,1946,corpus_lesbiennes/colette_etoilevesper.txt,lesbiennes,header
+colette_fanal,Le Fanal bleu,Colette,1949,corpus_lesbiennes/colette_fanal.txt,lesbiennes,header
+colette_femmecachee,La Femme cachée,Colette,1924,corpus_lesbiennes/colette_femmecachee.txt,lesbiennes,header
+colette_fincheri,La Fin de Chéri roman,Colette,1926,corpus_lesbiennes/colette_fincheri.txt,lesbiennes,header
+colette_fleurage,La Fleur de l’âge,Colette,1950,corpus_lesbiennes/colette_fleurage.txt,lesbiennes,header
+colette_foule,Dans la foule,Colette (Colette Willy),1918,corpus_lesbiennes/colette_foule.txt,lesbiennes,header
+colette_gigi,Gigi,Colette,1945,corpus_lesbiennes/colette_gigi.txt,lesbiennes,header
+colette_herbier,Herbier,Colette,,corpus_lesbiennes/colette_herbier.txt,lesbiennes,filename
+colette_heures,Les Heures longues 1914-1917,Colette (Colette Willy),1917,corpus_lesbiennes/colette_heures.txt,lesbiennes,header
+colette_hotel,Chambre d’hôtel,Colette,1954,corpus_lesbiennes/colette_hotel.txt,lesbiennes,header
+colette_ingenue,Ingenue,Colette,,corpus_lesbiennes/colette_ingenue.txt,lesbiennes,filename
+colette_journalintermittent,Journal intermittent,Colette,1950,corpus_lesbiennes/colette_journalintermittent.txt,lesbiennes,header
+colette_journalrebours,Journal à rebours,Colette,1941,corpus_lesbiennes/colette_journalrebours.txt,lesbiennes,header
+colette_julie,Julie de Carneilhan,Colette,1941,corpus_lesbiennes/colette_julie.txt,lesbiennes,header
+colette_kepi,Le Képi,Colette,1943,corpus_lesbiennes/colette_kepi.txt,lesbiennes,header
+colette_maisonclaudine,La Maison de Claudine,Colette,1922,corpus_lesbiennes/colette_maisonclaudine.txt,lesbiennes,header
+colette_minne,Minne,Colette en collaboration avec Willy,1904,corpus_lesbiennes/colette_minne.txt,lesbiennes,header
+colette_mitsou,Mitsou,Colette,,corpus_lesbiennes/colette_mitsou.txt,lesbiennes,filename
+colette_naissance,La Naissance du jour roman,Colette,1928,corpus_lesbiennes/colette_naissance.txt,lesbiennes,header
+colette_paixbetes,La Paix chez les bêtes Frontispice de Steinlen,Colette (Colette Willy),1916,corpus_lesbiennes/colette_paixbetes.txt,lesbiennes,header
+colette_parisfenetre,Paris de ma fenêtre,Colette,1944,corpus_lesbiennes/colette_parisfenetre.txt,lesbiennes,header
+colette_paysconnu,En pays connu,Colette,1950,corpus_lesbiennes/colette_paysconnu.txt,lesbiennes,header
+colette_portee,À portée de la main,Colette,1950,corpus_lesbiennes/colette_portee.txt,lesbiennes,header
+colette_prisonsparadis,Prisons et Paradis Édition définitive,Colette,1932,corpus_lesbiennes/colette_prisonsparadis.txt,lesbiennes,header
+colette_purimpur,Purimpur,Colette,,corpus_lesbiennes/colette_purimpur.txt,lesbiennes,filename
+colette_retraite,La Retraite sentimentale Édition définitive,Colette Willy,1914,corpus_lesbiennes/colette_retraite.txt,lesbiennes,header
+colette_seconde,La Seconde - roman,Colette,1929,corpus_lesbiennes/colette_seconde.txt,lesbiennes,header
+colette_sido,SIDO,Colette,1930,corpus_lesbiennes/colette_sido.txt,lesbiennes,header
+colette_toutounier,Le Toutounier,Colette,1939,corpus_lesbiennes/colette_toutounier.txt,lesbiennes,header
+colette_trait,Trait pour trait,Colette,1950,corpus_lesbiennes/colette_trait.txt,lesbiennes,header
+colette_troissixneuf,Trois-six-neuf,Colette,1944,corpus_lesbiennes/colette_troissixneuf.txt,lesbiennes,header
+colette_vagabonde,Vagabonde,Colette,,corpus_lesbiennes/colette_vagabonde.txt,lesbiennes,filename
+colette_voyage,Le Voyage égoïste,Colette,1922,corpus_lesbiennes/colette_voyage.txt,lesbiennes,header
+colette_vrilles,Vrilles,Colette,,corpus_lesbiennes/colette_vrilles.txt,lesbiennes,filename
+delarue_anges,Anges,Lucie Delarue-Mardrus,,corpus_lesbiennes/delarue_anges.txt,lesbiennes,filename
+delarue_coeurardoise,Le coeur sur l'ardoise,Lucie Delarue-Mardrus,1941,corpus_lesbiennes/delarue_coeurardoise.txt,lesbiennes,header
+delarue_exvoto,L'Ex-voto. Illustré de gravures originales par Auguste Brouet,Lucie Delarue-Mardrus,1927,corpus_lesbiennes/delarue_exvoto.txt,lesbiennes,header
+delarue_femmemure,Une femme mûre et l'amour,Lucie Delarue-Mardrus,1935,corpus_lesbiennes/delarue_femmemure.txt,lesbiennes,header
+delarue_girl,La girl : roman,Lucie Delarue-Mardrus,1939,corpus_lesbiennes/delarue_girl.txt,lesbiennes,header
+delarue_herminepassant,L’hermine passant,Lucie Delarue-Mardrus,1938,corpus_lesbiennes/delarue_herminepassant.txt,lesbiennes,header
+delarue_lamourattend,Lamourattend,Lucie Delarue-Mardrus,,corpus_lesbiennes/delarue_lamourattend.txt,lesbiennes,filename
+delarue_memoires,Mes mémoires,Lucie Delarue-Mardrus,1938,corpus_lesbiennes/delarue_memoires.txt,lesbiennes,header
+delarue_monde,Monde,Lucie Delarue-Mardrus,,corpus_lesbiennes/delarue_monde.txt,lesbiennes,filename
+delarue_monnaiesinge,La monnaie de singe : roman,Lucie Delarue-Mardrus,1912,corpus_lesbiennes/delarue_monnaiesinge.txt,lesbiennes,header
+delarue_painblanc,"Le Pain blanc, roman. Bois originaux de Jean Buhot",Lucie Delarue-Mardrus,1932,corpus_lesbiennes/delarue_painblanc.txt,lesbiennes,header
+delarue_peauxdlapin,Peaux d'lapins,Lucie Delarue-Mardrus,1944,corpus_lesbiennes/delarue_peauxdlapin.txt,lesbiennes,header
+delarue_perle,La perle magique,Lucie Delarue-Mardrus,1945,corpus_lesbiennes/delarue_perle.txt,lesbiennes,header
+delarue_roireflets,Le roi des reflets,Lucie Delarue-Mardrus,1945,corpus_lesbiennes/delarue_roireflets.txt,lesbiennes,header
+delarue_romancivil,Romancivil,Lucie Delarue-Mardrus,,corpus_lesbiennes/delarue_romancivil.txt,lesbiennes,filename
+delarue_rouen,Rouen,Lucie Delarue-Mardrus,1935,corpus_lesbiennes/delarue_rouen.txt,lesbiennes,header
+delarue_toutoune,Toutoune,Lucie Delarue-Mardrus,,corpus_lesbiennes/delarue_toutoune.txt,lesbiennes,filename
+delarue_verteil,VERTEIL ET SES AMOURS,Lucie Delarue-Mardrus,1945,corpus_lesbiennes/delarue_verteil.txt,lesbiennes,header
+francillon_lettre,Lettre,Francillon,,corpus_lesbiennes/francillon_lettre.txt,lesbiennes,filename
+galzy_allonges,Les allongés,JEANNE GALZY,,corpus_lesbiennes/galzy_allonges.txt,lesbiennes,header
+galzy_cavaliere,La cavalière,Jeanne Galzy,,corpus_lesbiennes/galzy_cavaliere.txt,lesbiennes,header
+galzy_demonssolitude,Demonssolitude,JEANNE GALZY,,corpus_lesbiennes/galzy_demonssolitude.txt,lesbiennes,filename
+galzy_fille,Fille,JEANNE GALZY,,corpus_lesbiennes/galzy_fille.txt,lesbiennes,filename
+galzy_initiatrice,Initiatrice,JEANNE GALZY,,corpus_lesbiennes/galzy_initiatrice.txt,lesbiennes,filename
+galzy_retourvie,Retourvie,JEANNE GALZY,,corpus_lesbiennes/galzy_retourvie.txt,lesbiennes,filename
+galzy_surprisevivre,Surprisevivre,JEANNE GALZY,,corpus_lesbiennes/galzy_surprisevivre.txt,lesbiennes,filename
+hall_puits,Puits,Hall,,corpus_lesbiennes/hall_puits.txt,lesbiennes,filename
+havet_carnaval,Carnaval,Mireille Havet,1922,corpus_lesbiennes/havet_carnaval.txt,lesbiennes,header
+leblanc_choixvie,Choixvie,Georgette Leblanc,,corpus_lesbiennes/leblanc_choixvie.txt,lesbiennes,filename
+leblanc_machine,La Machine à courage,Georgette Leblanc,1947,corpus_lesbiennes/leblanc_machine.txt,lesbiennes,header
+leblanc_machinecourage,La Machine à courage,Georgette Leblanc,1947,corpus_lesbiennes/leblanc_machinecourage.txt,lesbiennes,header
+leblanc_pelerinage,Un pélerinage au pays de Madame Bovary,Georgette Leblanc,1913,corpus_lesbiennes/leblanc_pelerinage.txt,lesbiennes,header
+mahyere_eblouir,Eblouir,Mahyere,,corpus_lesbiennes/mahyere_eblouir.txt,lesbiennes,filename
+mannoury_cousines,Cousines,Mannoury,,corpus_lesbiennes/mannoury_cousines.txt,lesbiennes,filename
+mannoury_violette,Violette,Mannoury,,corpus_lesbiennes/mannoury_violette.txt,lesbiennes,filename
+monnier_odeon,Rue de l'Odéon,Adrienne Monnier,1960,corpus_lesbiennes/monnier_odeon.txt,lesbiennes,header
+noailles_domination,Domination,Anna de Noailles,,corpus_lesbiennes/noailles_domination.txt,lesbiennes,filename
+noailles_esperance,La Nouvelle Espérance,Anna de Noailles,1903,corpus_lesbiennes/noailles_esperance.txt,lesbiennes,header
+noailles_innocentes,Innocentes,Anna de Noailles,,corpus_lesbiennes/noailles_innocentes.txt,lesbiennes,filename
+noailles_visage,Visage,Anna de Noailles,,corpus_lesbiennes/noailles_visage.txt,lesbiennes,filename
+pougy_cahiers,MES CAHIERS BLEUS,Liane de Pougy,1919,corpus_lesbiennes/pougy_cahiers.txt,lesbiennes,header
+pougy_idylle,Idylle,Liane de Pougy,,corpus_lesbiennes/pougy_idylle.txt,lesbiennes,filename
+pougy_sensations,Sensations,Liane de Pougy,,corpus_lesbiennes/pougy_sensations.txt,lesbiennes,filename
+pougy_yvee,Yvée Jourdan... / Liane de,Pougy,,corpus_lesbiennes/pougy_yvee.txt,lesbiennes,header
+rachilde_marquise,La Marquise de Sade,Rachilde,,corpus_lesbiennes/rachilde_marquise.txt,lesbiennes,header
+rachilde_mrvenus,Mrvenus,Rachilde,,corpus_lesbiennes/rachilde_mrvenus.txt,lesbiennes,filename
+reval_sevriennes,Sevriennes,Reval,,corpus_lesbiennes/reval_sevriennes.txt,lesbiennes,filename
+saintagen_affolante,"L'Affolante illusion, par",Adrienne Saint-Agen,,corpus_lesbiennes/saintagen_affolante.txt,lesbiennes,header
+vaudere_demi,Les Demi-Sexes,Jane de la Vaudère,1897,corpus_lesbiennes/vaudere_demi.txt,lesbiennes,header
+vaudere_sapho,Sapho,Jane de la Vaudère,,corpus_lesbiennes/vaudere_sapho.txt,lesbiennes,filename
+vivien_christaphrodite,"Le Christ, Aphrodite et M. Pépin",Renée Vivien,1907,corpus_lesbiennes/vivien_christaphrodite.txt,lesbiennes,header
+vivien_damelouve,Damelouve,Renée Vivien,,corpus_lesbiennes/vivien_damelouve.txt,lesbiennes,filename
+vivien_etre,Etre,Renée Vivien,,corpus_lesbiennes/vivien_etre.txt,lesbiennes,filename
+vivien_femme,Femme,Renée Vivien,,corpus_lesbiennes/vivien_femme.txt,lesbiennes,filename
+vivien_femme1904,Une Femme m’apparut…,Renée Vivien,1904,corpus_lesbiennes/vivien_femme1904.txt,lesbiennes,header
+zuylen_chemin,Chemin,Zuylen,,corpus_lesbiennes/zuylen_chemin.txt,lesbiennes,filename

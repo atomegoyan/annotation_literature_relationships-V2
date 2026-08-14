@@ -1,0 +1,296 @@
+% Evaluation section, v3. Included from paper.tex with \input{evaluation_v3}.
+%
+% Bibliography keys required:
+%   pangakis2023validation, krippendorff2013content, krippendorff2016unitizing,
+%   mathet2015gamma, mathet2017gammacat, luo2005coreference,
+%   kirillov2019panoptic, chinchor1992muc4, chen2023unified, dieugenio2004kappa
+%
+% Figures are computed after validating every label in both files against the
+% codebook vocabulary (one variant spelling in the gold file, "asymetrical",
+% was silently costing seven points on reciprocity before this check existed).
+
+\section{Evaluating the annotation pipeline}
+\label{sec:evaluation}
+
+\subsection{A gold standard of one novel}
+
+Before running the codebook over some four hundred novels we need to know what
+an LLM annotation of a novel is actually worth; automated annotation without
+that check is not a measurement \cite{pangakis2023validation}. We therefore
+hand-annotated one novel, Lucie Delarue-Mardrus's \emph{L'Ange et les pervers}
+(1930), following the same codebook we give the models. The choice is
+deliberate rather than convenient: its protagonist, Marion / Mario de
+Valdeclare, is presented as intersex and moves between sapphic salons and male
+homosexual circles, so the novel exercises the parts of the grid we care most
+about --- the \texttt{queer} value of \texttt{relation\_type}, collective and
+milieu relationships, and desire that is coded rather than declared. The human
+annotation records fourteen relationships, from the central bond between Marion
+and Laurette Wells down to a two-line marriage recalled in the backstory. One
+novel gives a first reading of how the pipeline behaves, not a corpus-level
+estimate of its accuracy; everything below should be read as a pilot.
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    Provider & Model \\
+    \midrule
+    DeepSeek  & V4 Pro \\
+    Anthropic & Claude Sonnet 5 \\
+    Anthropic & Claude Opus 5 \\
+    OpenAI    & GPT-5.6 Luna Pro \\
+    OpenAI    & GPT-5.6 Terra \\
+    \bottomrule
+  \end{tabular}
+  \caption{The five models compared, all called through OpenRouter with an
+  identical system prompt, codebook, and JSON schema.}
+  \label{tab:models}
+\end{table}
+
+\subsection{Two measures and their product}
+
+Reading a novel with this grid means doing two rather different things. The
+annotator first draws up a \emph{census}: which relationships in this novel are
+worth an entry at all? Then, for each entry, they \emph{code} it, choosing one
+label per closed field. A model can do one well and the other badly --- find
+exactly the fourteen relationships a human found and misread the tone of every
+one of them, or code impeccably three relationships nobody would have listed. A
+single accuracy figure hides that difference, which is precisely the difference
+we want to report.
+
+The distinction is not ours. Content analysis has long separated
+\emph{unitizing} --- deciding what the units of analysis are --- from
+\emph{categorizing} them, and holds that the reliability of the first cannot be
+folded into the reliability of the second
+\cite{krippendorff2013content,krippendorff2016unitizing}. The measure that
+addresses both at once is $\gamma$, which aligns annotators' units and scores
+agreement on that alignment, with $\gamma_{cat}$ isolating the categorization
+component \cite{mathet2015gamma,mathet2017gammacat}. We would use $\gamma$ if we
+could. We cannot, for two reasons. $\gamma$ assumes units positioned on a
+continuum and counts positional discrepancy as part of its dissimilarity,
+whereas a relationship is not located at a place in the novel: it is identified
+by \emph{who is in it}, and its footprint is the whole book. And our object is
+not agreement between interchangeable observers but the distance between a
+system and a reference, which is the setting precision and recall were made for.
+What follows therefore keeps $\gamma$'s architecture --- align first, score
+categorization on the alignment --- on a set-identity criterion rather than a
+positional one.
+
+\paragraph{Matching.} Let $G$ be the set of relationships in the human
+annotation of a novel and $P$ the set proposed by a model. Neither is an ordered
+list, so nothing can be compared until the two are aligned. We align on the
+participants: each relationship $r$ carries an identifier $\mathrm{id}(r)$ built
+from the characters involved --- \texttt{laurette\_aimee} for the affair between
+Laurette Wells and Aimée de Lagres, \texttt{pere\_mere} for Marion's parents ---
+recorded in both files, with aliases resolved beforehand (Marion, Mario and Miss
+Marion Hervin are one character). Two relationships match when their identifiers
+are equal:
+%
+\begin{align}
+M = \{(g,p) \in G \times P \;:\; \mathrm{id}(g) = \mathrm{id}(p)\} .
+\end{align}
+%
+In the vocabulary of coreference scoring this is CEAF under Luo's strictest
+similarity $\phi_1$, which credits an alignment only when the two sets are
+identical \cite{luo2005coreference}. Luo sets $\phi_1$ aside as too severe for
+coreference, where exact agreement on a mention chain is vanishingly rare; it is
+usable here only because participant lists are short and canonicalised upstream.
+The gain is that the census score carries no similarity function and no
+threshold, and a disagreement about who is involved in a relationship is treated
+as what it is: a disagreement about the novel, not a spelling problem.
+
+\paragraph{Recognition quality: did the model see the same relationships?} From
+$M$ we take precision, recall and their harmonic mean, computed over
+relationships rather than tokens:
+%
+\begin{align}
+\mathrm{P} = \frac{|M|}{|P|}, \qquad
+\mathrm{R} = \frac{|M|}{|G|}, \qquad
+\mathrm{RQ} = \frac{2\,\mathrm{P}\,\mathrm{R}}{\mathrm{P} + \mathrm{R}} .
+\end{align}
+%
+Precision asks whether the relationships a model proposes are ones a human
+reader would also have listed; recall asks how much of the novel's relational
+fabric it leaves out. RQ says nothing about how well anything was described.
+
+\paragraph{Coding quality: did it fill the grid the same way?} For a matched
+pair $(g,p)$ we compare the closed fields one by one and take the proportion on
+which the human and the model wrote the same label:
+%
+\begin{align}
+a(g,p) = \frac{1}{K} \sum_{k=1}^{K} \mathbf{1}\!\left[\, g_k = p_k \,\right] ,
+\qquad
+\mathrm{CQ} = \frac{1}{|M|} \sum_{(g,p) \in M} a(g,p) .
+\end{align}
+%
+Credit is strict: the codebook offers no principled way to call
+\texttt{decadent\_sublime} half-right when the annotator wrote
+\texttt{moralized\_pathologized}. Every field weighs the same. The grid has
+eleven closed fields, but the gold file predates \texttt{explicitness\_in\_plot},
+added in schema v2, so this pilot scores $K = 10$. \texttt{confidence} is logged
+by the models but is metadata about the annotation, not a property of the
+relationship, and is not scored.
+
+\paragraph{Annotation quality: one number, and why it is a product.} Suppose we
+scored the whole annotation at once, with a matched relationship counting not as
+$1$ but as $a(g,p)$. The harmonic mean of the resulting precision and recall is
+exactly $\mathrm{RQ} \times \mathrm{CQ}$: the mean coding score factors out of
+the numerator and cancels in the denominator. The product is therefore not a
+weighting we chose but that single figure, read in its two parts:
+%
+\begin{align}
+\mathrm{AQ} = \mathrm{RQ} \times \mathrm{CQ} .
+\end{align}
+%
+A model that finds seven tenths of the relationships and gets seven tenths of
+the grid right on those has produced about half the annotation we wanted, which
+is what $\mathrm{AQ} \approx 0.51$ says. AQ is bounded above by RQ and reaches
+it only if every matched relationship is coded perfectly. We always report the
+triple $(\mathrm{RQ}, \mathrm{CQ}, \mathrm{AQ})$: two models can arrive at the
+same AQ by opposite routes, one prolific and careless, the other cautious and
+narrow, and for a corpus study those are not interchangeable.
+
+This is the shape of panoptic quality in image segmentation, where a recognition
+quality --- the same $F_1$ over matched objects --- multiplies a segmentation
+quality averaging overlap on the matches \cite{kirillov2019panoptic}, and of
+template-filling evaluation since MUC \cite{chinchor1992muc4}. We claim no new
+measure: RQ, CQ and AQ instantiate a well-described family, match substructures
+then normalise \cite{chen2023unified}, for a hermeneutic coding grid. What the
+instantiation buys is the ability to read the two capacities apart.
+
+\subsection{What the pipeline gets right, and where it stops}
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{lcccccc}
+    \toprule
+    Model & $|P|$ & P & R & RQ & CQ & AQ \\
+    \midrule
+    \textbf{Claude Opus 5} & 14 & 0.71 & 0.71 & 0.71 & 0.72 & \textbf{0.51} \\
+    GPT-5.6 Terra          &  6 & 1.00 & 0.43 & 0.60 & 0.78 & 0.47 \\
+    Claude Sonnet 5        &  6 & 1.00 & 0.43 & 0.60 & 0.73 & 0.44 \\
+    GPT-5.6 Luna Pro       &  5 & 1.00 & 0.36 & 0.53 & 0.66 & 0.35 \\
+    DeepSeek V4 Pro        &  7 & 0.86 & 0.43 & 0.57 & 0.47 & 0.27 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Census, coding and combined score for the five models on
+  \emph{L'Ange et les pervers}, against fourteen human-annotated relationships,
+  sorted by AQ. $|P|$ is the number of relationships the model proposed.}
+  \label{tab:model-results}
+\end{table}
+
+The $|P|$ column is the most telling. Claude Opus 5 proposes exactly fourteen
+relationships and gets ten of them right; the other four propose five to seven
+and are almost never wrong about the ones they propose. That second behaviour is
+not caution about \emph{coding} but a narrower idea of what counts as a
+relationship: those models list the named couples and stop. What they leave out
+is the collective material --- Laurette Wells surrounded by her favourites, the
+theatre milieu around Ginette Lobre, the powdered young men of Julien Midalge's
+circle. For a study of sapphic and homosexual sociability those are not
+decorative background; they are the milieux the corpus was assembled to
+describe. A model with perfect precision that returns only the foreground
+couples would quietly reshape the corpus into a series of couples, which is why
+precision alone is a poor guide to model choice here.
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{lcccccc}
+    \toprule
+    Field & Opus & Terra & Sonnet & Luna & DeepS. & mean \\
+    \midrule
+    \texttt{relation\_type} & 0.90 & 1.00 & 1.00 & 1.00 & 0.83 & 0.95 \\
+    \texttt{structure}      & 0.90 & 1.00 & 0.67 & 1.00 & 1.00 & 0.91 \\
+    \texttt{centrality}     & 0.90 & 0.83 & 1.00 & 0.80 & 0.67 & 0.84 \\
+    \texttt{status}         & 0.70 & 1.00 & 0.83 & 0.80 & 0.83 & 0.83 \\
+    \midrule
+    \texttt{explicitness}   & 0.70 & 1.00 & 0.67 & 0.80 & 0.33 & 0.70 \\
+    \texttt{reciprocity}    & 0.70 & 0.83 & 0.83 & 0.80 & 0.33 & 0.70 \\
+    \texttt{outcome}        & 0.70 & 0.83 & 0.67 & 0.60 & 0.33 & 0.63 \\
+    \midrule
+    \texttt{exclusivity}    & 0.70 & 0.50 & 0.83 & 0.40 & 0.00 & 0.49 \\
+    \texttt{adultery}       & 0.70 & 0.33 & 0.67 & 0.40 & 0.17 & 0.45 \\
+    \texttt{framing}        & 0.30 & 0.50 & 0.17 & 0.00 & 0.17 & 0.23 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Agreement with the human annotation, field by field, on matched
+  relationships only (10 pairs for Opus, 6 for Terra, Sonnet and DeepSeek, 5 for
+  Luna); the last column is the unweighted mean of the five rates. Fields are
+  grouped by mean agreement, not by codebook family.}
+  \label{tab:field-results}
+\end{table}
+
+Averaging over fields hides the finding, so Table~\ref{tab:field-results}
+reports agreement field by field, and the grid falls into three layers that are
+not the codebook's three families. The top layer is descriptive and essentially
+solved: once a model and a human agree that a relationship exists, they agree on
+its gender configuration, the shape of the group, the kind of bond and how much
+room the novel gives it. The \texttt{queer} coding is the strongest case --- every
+relationship involving Marion / Mario is coded \texttt{queer} by all five models,
+which is not trivial for a 1930 novel that never uses a clinical vocabulary for
+its protagonist.
+
+The middle layer sits at roughly two thirds, usable with care. The bottom layer
+is where the pipeline fails, and its three fields have something in common: they
+all ask for a judgment about norms. \texttt{exclusivity} and \texttt{adultery}
+record the rules a relation operates under and whether they are broken, and the
+codebook binds them by an explicit pairing rule; the models do not apply it as a
+rule, which suggests a schema constraint rather than a better prompt.
+\texttt{framing} resists most. \texttt{neutral\_ambivalent} is the models'
+default, given fifteen times out of thirty-three, and
+\texttt{redemptive\_spiritualized} --- which the annotator uses five times --- is
+never once produced by any model. The vocabulary of \emph{pervers} and of
+salvation that gives the novel its title is exactly what the automatic pass does
+not recover. That contrast \emph{is} the result: the grid contains a descriptive
+layer that can be automated at corpus scale today and a normative layer that
+cannot, and the second carries the interpretive claims of the project.
+
+\subsection{Limits of the measure}
+
+Three limits bear directly on how the table should be read. \emph{Exact keying
+makes collective relationships unscoreable.} Alias resolution settles naming for
+named characters; it does not decide whether Laurette and her favourites are one
+\texttt{hierarchy\_group} relationship or six dyads. That is a scholarly
+decision, not noise, and under an exact key a legitimate disagreement about it
+costs a false positive and a false negative at once. Fixing a canonical
+identifier per milieu is the first change planned for the grid, alongside a
+\texttt{direction} field, since the participant list stores no roles and a model
+that inverts the seducer and the seduced currently scores a perfect match.
+
+\emph{CQ is measured on a sample each model chooses for itself.} Coding quality
+is computed only on matched pairs, so Terra's 0.78 averages over six legible
+couples while Opus's 0.72 averages over ten, including the collective forms the
+others declined --- the prolific model is penalised for attempting the hard
+cases. The ordering of the middle three models in
+Table~\ref{tab:model-results} should not be read as a separation.
+
+\emph{Agreement is not chance-corrected, and there is no human ceiling.} The
+marginals are skewed and the models almost never abstain where the annotator
+does, so the top of the field table is flattered \cite{dieugenio2004kappa}. A
+chance-corrected coefficient becomes meaningful once a second human annotator
+gives us something to compare it against: fields where two readers would agree
+at 0.6 cannot be used to convict a model at 0.6, and double annotation of a
+subset is the measurement that would make
+Table~\ref{tab:field-results} fully interpretable.
+
+\subsection{What we carry forward}
+
+On this pilot, Claude Opus 5 is the model we take to the rest of the corpus: it
+is the only one that annotates at the granularity the codebook asks for, milieux
+included, and it pays for that coverage with a precision the others never have
+to risk. The ranking rests on one novel and should be revisited as the gold
+standard grows.
+
+More important than the ranking is the shape of the result. The census and the
+descriptive half of the grid --- who is involved, in what gender configuration,
+in what shape of group, in what kind of bond, with how much narrative room ---
+are reliable enough to run over four hundred novels and to support
+distributional claims. The normative half --- what the relation owes to whom,
+and what the novel makes of it --- is not, and we do not intend to publish
+corpus-wide figures on \texttt{framing} on the strength of an automatic pass.
+The pipeline's role is a division of labour rather than a replacement: it
+produces the census and the descriptive coding at scale, and directs human
+reading towards the relationships where the interpretive fields are actually at
+stake.
